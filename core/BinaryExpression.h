@@ -7,7 +7,7 @@
 
 #include "Expression.h"
 
-<template class T>
+template <class T>
 class BinaryExpression {
 public:
     virtual T evaluate(Expression l, Expression r) =0;

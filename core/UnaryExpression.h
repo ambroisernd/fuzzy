@@ -7,7 +7,7 @@
 
 #include "Expression.h"
 
-<template class T>
+template <class T>
 class UnaryExpression {
 public:
     virtual T evaluate(Expression o) =0;
