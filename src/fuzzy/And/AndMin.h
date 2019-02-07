@@ -14,7 +14,7 @@ namespace fuzzy {
 
     template <class T>
     T AndMin<T>::evaluate(core::Expression l, core::Expression r) {
-        return min(l , r);
+        return min(l , r); //TODO
     }
 }
 

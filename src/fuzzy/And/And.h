@@ -1,7 +1,7 @@
 #ifndef FUZZY_AND_H
 #define FUZZY_AND_H
 
-#include "BinaryExpression"
+#include "BinaryExpression.h"
 
 namespace fuzzy {
 
