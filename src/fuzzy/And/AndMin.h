@@ -17,4 +17,5 @@ namespace fuzzy {
         return min(l , r);
     }
 }
+
 #endif FUZZY_ANDMIN_H
