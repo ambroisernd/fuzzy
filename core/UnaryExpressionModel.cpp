@@ -3,18 +3,19 @@
 //
 
 #include "UnaryExpressionModel.h"
-
-template <class T>
-T UnaryExpressionModel::evaluate() {
-    if (operand != null) {
-        return evaluate(operand);
-    }
-}
-
-template <class T>
-T UnaryExpressionModel::evaluate(Expression o) {
-    if(operatore != null){
-        return operatore.evaluate(o);
+namespace core {
+    template<class T>
+    T UnaryExpressionModel::evaluate() {
+        if (operand != null) {
+            return evaluate(operand);
+        }
     }
 
+    template<class T>
+    T UnaryExpressionModel::evaluate(Expression o) {
+        if (operatore != null) {
+            return operatore.evaluate(o);
+        }
+
+    }
 }
