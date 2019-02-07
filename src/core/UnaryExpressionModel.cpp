@@ -6,14 +6,14 @@
 namespace core {
     template<class T>
     T UnaryExpressionModel<T>::evaluate() {
-        if (operand != null) {
+        if (operand != nullptr) {
             return evaluate(operand);
         }
     }
 
     template<class T>
     T UnaryExpressionModel<T>::evaluate(Expression<T> o) {
-        if (operatore != null) {
+        if (operatore != nullptr) {
             return operatore.evaluate(o);
         }
 
