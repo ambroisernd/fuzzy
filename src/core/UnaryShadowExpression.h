@@ -14,6 +14,12 @@ namespace core {
     private:
         UnaryExpression<T> target;
     };
+    template<class T>
+    T UnaryShadowExpression<T>::evaluate(core::Expression<T> o) {
+        if(target!= nullptr){
+            return target.evaluate(o);
+        }
+    }
 }
 
 #endif FUZZY_UNARYSHADOWEXPRESSION_H
