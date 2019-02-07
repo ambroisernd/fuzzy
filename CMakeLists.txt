@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.13)
-project(fuzzyLogic)
+project(fuzzy)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -9,4 +9,4 @@ file(
         src/*
 )
 
-add_executable(fuzzyLogic ${sources})
+add_executable(fuzzy ${sources})
