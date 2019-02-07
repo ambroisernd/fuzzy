@@ -6,12 +6,12 @@
 
 namespace core {
     template <class T>
-    class BinaryShadowExpression : public BinaryExpression {
+    class BinaryShadowExpression : public BinaryExpression<T> {
     public:
-        virtual T evaluate(Expression l, Expression r);
+        virtual T evaluate(Expression<T> l, Expression<T> r);
 
     private:
-        BinaryExpression target;
+        BinaryExpression<T> target;
     };
 
 }

@@ -3,7 +3,7 @@
 namespace core {
 
     template<class T>
-    T BinaryShadowExpression::evaluate(core::Expression l, core::Expression r) {
+    T BinaryShadowExpression<T>::evaluate(core::Expression<T> l, core::Expression<T> r) {
         if(target!=null){
             return target.evaluate(l,r);
         }

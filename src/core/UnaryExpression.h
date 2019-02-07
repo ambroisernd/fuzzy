@@ -10,7 +10,7 @@ namespace core {
     template<class T>
     class UnaryExpression {
     public:
-        virtual T evaluate(Expression o) = 0;
+        virtual T evaluate(Expression<T> o) = 0;
 
     };
 }

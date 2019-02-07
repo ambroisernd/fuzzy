@@ -8,16 +8,16 @@
 #include "BinaryExpression.h"
 namespace core {
     template<class T>
-    class BinaryExpressionModel : BinaryExpression {
+    class BinaryExpressionModel : BinaryExpression<T> {
     public:
         virtual T evaluate();
 
-        virtual T evaluate(Expression l, Expression r);
+        virtual T evaluate(Expression<T> l, Expression<T> r);
 
     private:
-        Expression left;
-        Expression right;
-        BinaryExpression operatore;
+        Expression<T> left;
+        Expression<T> right;
+        BinaryExpression<T> operatore;
     };
 }
 

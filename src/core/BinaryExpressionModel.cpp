@@ -5,14 +5,14 @@
 #include "BinaryExpressionModel.h"
 namespace core {
     template<class T>
-    T BinaryExpressionModel::evaluate() {
+    T BinaryExpressionModel<T>::evaluate() {
         if (left != null && right != null) {
             return operatore.evaluate(l, r);
         }
     }
 
     template<class T>
-    T BinaryExpressionModel::evaluate(Expression l, Expression r) {
+    T BinaryExpressionModel<T>::evaluate(core::Expression<T> l, core::Expression<T> r) {
         if (operatore != null) {
             return operatore.evaluate(l, r);
         }

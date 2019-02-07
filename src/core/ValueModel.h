@@ -5,9 +5,10 @@
 #ifndef FUZZY_VALUEMODEL_H
 #define FUZZY_VALUEMODEL_H
 
+#include "Expression.h"
 namespace core {
     template<class T>
-    class ValueModel : public Expression {
+    class ValueModel : public Expression<T> {
     public:
         virtual T evaluate();
 

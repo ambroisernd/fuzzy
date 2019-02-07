@@ -11,7 +11,7 @@ namespace core{
     template <class T>
     class BinaryExpression {
     public:
-        virtual T evaluate(Expression l, Expression r) =0;
+        virtual T evaluate(core::Expression<T> l, core::Expression<T> r) =0;
 
     };
 }

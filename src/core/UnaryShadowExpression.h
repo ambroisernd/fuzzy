@@ -8,11 +8,11 @@
 namespace core {
 
     template<class T>
-    class UnaryShadowExpression : public UnaryExpression {
+    class UnaryShadowExpression : public UnaryExpression<T> {
     public:
-        virtual T evaluate(Expression o);
+        virtual T evaluate(Expression<T> o);
     private:
-        UnaryExpression target;
+        UnaryExpression<T> target;
     };
 }
 

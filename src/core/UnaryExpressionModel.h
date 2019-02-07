@@ -8,15 +8,15 @@
 #include "UnaryExpression.h"
 namespace core {
     template<class T>
-    class UnaryExpressionModel : public UnaryExpression {
+    class UnaryExpressionModel : public UnaryExpression<T> {
     public:
         virtual T evaluate();
 
-        virtual T evaluate(Expression o);
+        virtual T evaluate(Expression<T> o);
 
     private:
-        UnaryExpression operatore;
-        Expression operand;
+        UnaryExpression<T> operatore;
+        Expression<T> operand;
     };
 }
 
