@@ -1,7 +1,3 @@
-//
-// Created by Paul on 06/02/2019.
-//
-
 #include "ValueModel.h"
 namespace core {
     template<class T>

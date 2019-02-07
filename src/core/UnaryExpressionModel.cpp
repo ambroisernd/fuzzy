@@ -1,7 +1,3 @@
-//
-// Created by Paul on 07/02/2019.
-//
-
 #include "UnaryExpressionModel.h"
 namespace core {
     template<class T>

@@ -1,7 +1,3 @@
-//
-// Created by Paul on 06/02/2019.
-//
-
 #ifndef FUZZY_VALUEMODEL_H
 #define FUZZY_VALUEMODEL_H
 
