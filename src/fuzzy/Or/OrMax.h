@@ -18,4 +18,4 @@ namespace fuzzy {
 
 
 
-#endif FUZZY_ORMAX_H
+#endif //FUZZY_ORMAX_H

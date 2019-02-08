@@ -12,4 +12,4 @@ namespace core{
     };
 }
 
-#endif FUZZY_BINARYEXPRESSION_H
+#endif //FUZZY_BINARYEXPRESSION_H
