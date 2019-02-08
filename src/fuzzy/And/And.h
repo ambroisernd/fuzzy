@@ -1,13 +1,13 @@
 #ifndef FUZZY_AND_H
 #define FUZZY_AND_H
 
-#include "BinaryExpression.h"
+#include "../../core/BinaryExpression.h"
 
 namespace fuzzy {
+    template <class T>
+    class And : public core::BinaryExpression<T> {
 
-    class And : public core::BinaryExpression{
-
-    };
+        };
 
 }
 #endif FUZZY_AND_H

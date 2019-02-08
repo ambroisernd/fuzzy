@@ -2,18 +2,17 @@
 #define FUZZY_ANDMIN_H
 
 #include "And.h"
-#include "Expression.h"
 
 namespace fuzzy {
     template <class T>
-    class AndMin : public And {
+    class AndMin : public And<T> {
     public:
-        virtual T evaluate(core::Expression, core::Expression);
+        virtual T evaluate(core::Expression<T>, core::Expression<T>);
 
     };
 
     template <class T>
-    T AndMin<T>::evaluate(core::Expression l, core::Expression r) {
+    T AndMin<T>::evaluate(core::Expression<T> l, core::Expression<T> r) {
         return min(l , r); //TODO
     }
 }
