@@ -6,9 +6,9 @@ using namespace core;
 void valueModelTest()
 {
     std::cout  << "set test" << std::endl;
-    ValueModel <int> vm = ValueModel<int>();
-    vm.setValue(5);
-    ASSERT(vm.evaluate() == 5);
+    Value v;
+    v.setValue(5);
+    ASSERT(v.evaluate() == 5);
 }
 
 int main() {

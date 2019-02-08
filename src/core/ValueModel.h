@@ -3,7 +3,7 @@
 
 #include "Expression.h"
 namespace core {
-    template<class T>
+    template<class T = double>
     class ValueModel : public Expression<T> {
     public:
         virtual T evaluate();
@@ -14,6 +14,9 @@ namespace core {
     private:
         T value;
     };
+
+    using Value = ValueModel<>;
+
     template<class T>
     void ValueModel<T>::setValue(T v) {
         value = v;
