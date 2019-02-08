@@ -20,4 +20,4 @@ namespace core {
         }
     }
 }
-#endif FUZZY_BINARYSHADOWEXPRESSION_H
+#endif //FUZZY_BINARYSHADOWEXPRESSION_H

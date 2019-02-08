@@ -22,4 +22,4 @@ namespace core {
     }
 }
 
-#endif FUZZY_UNARYSHADOWEXPRESSION_H
+#endif //FUZZY_UNARYSHADOWEXPRESSION_H

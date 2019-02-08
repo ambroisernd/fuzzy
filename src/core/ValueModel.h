@@ -27,4 +27,4 @@ namespace core {
         return value;
     }
 }
-#endif FUZZY_VALUEMODEL_H
+#endif //FUZZY_VALUEMODEL_H

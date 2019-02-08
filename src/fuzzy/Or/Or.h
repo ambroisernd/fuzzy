@@ -12,4 +12,4 @@ class Or : public core::BinaryExpression<T> {
 }
 
 
-#endif FUZZY_OR_H
+#endif //FUZZY_OR_H
