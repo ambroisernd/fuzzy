@@ -6,4 +6,3 @@ os: linux
 script:
   - cmake --version
   - cmake CMakeLists.txt
-  - cmake  --build . --target neat
