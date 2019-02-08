@@ -8,10 +8,10 @@ void valueModelTest()
     std::cout  << "set test" << std::endl;
     ValueModel <int> vm = ValueModel<int>();
     vm.setValue(5);
-    ASSERT(vm.evaluate() == 6);
+    ASSERT(vm.evaluate() == 5);
 }
 
 int main() {
-    valueModelTest();
+    valueModelTes();
     return 0;
 }

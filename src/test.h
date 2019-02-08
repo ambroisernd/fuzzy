@@ -7,6 +7,5 @@
             std::cout << std ::endl << "ASSERT ERROR "<< #x << " failed" << std::endl; \
             std::cout << "on line " << __LINE__ << std::endl; \
             std::cout << "in file " << __FILE__ << std::endl; \
-            exit(EXIT_FAILURE);\
             }
 #endif
