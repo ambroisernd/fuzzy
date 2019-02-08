@@ -10,4 +10,4 @@ namespace fuzzy {
         };
 
 }
-#endif FUZZY_AND_H
+#endif //FUZZY_AND_H

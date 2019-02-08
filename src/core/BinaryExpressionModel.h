@@ -17,4 +17,4 @@ namespace core {
     };
 }
 
-#endif FUZZY_BINARYEXPRESSIONMODEL_H
+#endif //FUZZY_BINARYEXPRESSIONMODEL_H
