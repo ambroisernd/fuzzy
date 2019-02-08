@@ -12,6 +12,6 @@ void valueModelTest()
 }
 
 int main() {
-    valueModelTes();
+    valueModelTest();
     return 0;
 }
