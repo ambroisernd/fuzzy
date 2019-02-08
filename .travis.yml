@@ -1,5 +1,10 @@
-language: cpp
-compiler:
-  - clang
-  - gcc
-script: make
+langauge: cpp
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - libusb-1.0-0-dev
+
+script:
+  - make
