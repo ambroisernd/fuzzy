@@ -2,9 +2,10 @@
 #define FUZZY_BINARYEXPRESSIONMODEL_H
 
 #include "BinaryExpression.h"
+
 namespace core {
     template<class T>
-    class BinaryExpressionModel : BinaryExpression<T> {
+    class BinaryExpressionModel : BinaryExpression<T>, Expression<T> {
     public:
         virtual T evaluate();
 

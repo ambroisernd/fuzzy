@@ -4,7 +4,7 @@
 #include "UnaryExpression.h"
 namespace core {
     template<class T>
-    class UnaryExpressionModel : public UnaryExpression<T> {
+    class UnaryExpressionModel : public UnaryExpression<T>, Expression<T> {
     public:
         virtual T evaluate();
 
