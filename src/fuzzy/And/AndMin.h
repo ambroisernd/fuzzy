@@ -7,14 +7,14 @@ namespace fuzzy {
     template <class T>
     class AndMin : public And<T> {
     public:
-        virtual T evaluate(core::Expression<T>, core::Expression<T>);
+        virtual T evaluate(core::Expression<T>*, core::Expression<T>*);
 
     };
 
     template <class T>
-    T AndMin<T>::evaluate(core::Expression<T> l, core::Expression<T> r) {
-        return min(l , r); //TODO
+    T AndMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) {
+        return std::min(l->evaluate() , r->evaluate()); //TODO
     }
 }
 
-#endif FUZZY_ANDMIN_H
+#endif
