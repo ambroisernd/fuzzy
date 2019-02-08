@@ -2,7 +2,7 @@
 #define FUZZY_ANDMIN_H
 
 #include "And.h"
-
+#include <algorithm>
 namespace fuzzy {
     template <class T>
     class AndMin : public And<T> {
