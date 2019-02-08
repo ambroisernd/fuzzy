@@ -6,7 +6,6 @@
 namespace fuzzy {
     template <class T>
     class And : public core::BinaryExpression<T> {
-
         };
 
 }

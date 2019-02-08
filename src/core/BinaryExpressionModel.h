@@ -9,7 +9,7 @@ namespace core {
     public:
         virtual T evaluate();
 
-        virtual T evaluate(Expression<T> l, Expression<T> r);
+        virtual T evaluate(Expression<T> *l, Expression<T> *r);
 
     private:
         Expression<T> left;
