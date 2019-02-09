@@ -8,7 +8,7 @@ namespace core {
     public:
         virtual T evaluate();
 
-        virtual T evaluate(Expression<T> o);
+        virtual T evaluate(Expression<T> *o);
 
     private:
         UnaryExpression<T> operatore;
@@ -22,7 +22,7 @@ namespace core {
     }
 
     template<class T>
-    T UnaryExpressionModel<T>::evaluate(Expression<T> o) {
+    T UnaryExpressionModel<T>::evaluate(Expression<T> *o) {
         if (operatore != nullptr) {
             return operatore.evaluate(o);
         }

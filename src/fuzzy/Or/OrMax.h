@@ -6,12 +6,12 @@
 namespace fuzzy {
     template <class T>
     class OrMax : public Or<T> {
-        virtual T evaluate(core::Expression<T>, core::Expression<T>);
+        virtual T evaluate(core::Expression<T>*, core::Expression<T>*);
 
     };
 
     template <class T>
-    T OrMax<T>::evaluate(core::Expression<T> l, core::Expression<T> r) {
+    T OrMax<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) {
         return max(l , r); //TODO
     }
 }
