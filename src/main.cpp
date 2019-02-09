@@ -10,6 +10,8 @@ void valueModelTest()
     std::cout  << "set test" << std::endl;
     Value v(5);
     ASSERT(v.evaluate() == 5);
+    v.setValue(10);
+    ASSERT(v.evaluate() == 10);
 }
 void andMinTest(){
     std::cout  << "AndMin test" << std::endl;
