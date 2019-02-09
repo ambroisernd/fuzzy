@@ -7,9 +7,11 @@ using namespace core;
 using namespace fuzzy;
 void valueModelTest()
 {
-    std::cout  << "ValueModel set test" << std::endl;
+    std::cout  << "ValueModel test" << std::endl;
     Value v(5);
     ASSERT(v.evaluate() == 5);
+    v.setValue(10);
+    ASSERT(v.evaluate() == 10);
 }
 void andMinTest(){
     std::cout  << "AndMin test" << std::endl;
