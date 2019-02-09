@@ -3,6 +3,7 @@
 #include "test.h"
 #include "core/ValueModel.h"
 #include "fuzzy/And/AndMin.h"
+#include "fuzzy/And/AndMult.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -18,11 +19,19 @@ void andMinTest(){
     AndMini am;
     Value t(true);
     Value f(false);
-    ASSERT(am.evaluate(&t,&f) == 0)
+    ASSERT(am.evaluate(&t,&f) == 0) //expecting TRUE and FALSE = FALSE
+}
+void andMultTest(){
+    std::cout << "AndMult test" << std::endl;
+    AndMulti am;
+    Value l(2);
+    Value r(3);
+    ASSERT(am.evaluate(&l,&r) == 6); //expecting 2*3=6
 }
 
 int main() {
     valueModelTest();
     andMinTest();
+    andMultTest();
     return 0;
 }
