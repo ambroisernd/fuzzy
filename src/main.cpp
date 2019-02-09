@@ -4,6 +4,8 @@
 #include "core/ValueModel.h"
 #include "fuzzy/And/AndMin.h"
 #include "fuzzy/And/AndMult.h"
+#include "fuzzy/Or/OrMax.h"
+#include "fuzzy/Then/ThenMin.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -28,10 +30,29 @@ void andMultTest(){
     Value r(3);
     ASSERT(am.evaluate(&l,&r) == 6); //expecting 2*3=6
 }
+void orMaxTest(){
+    std::cout << "OrMax test" << std::endl;
+    OrMaxi om;
+    Value t(true);
+    Value f(false);
+    ASSERT(om.evaluate(&t,&f) == 1); //expecting TRUE or FALSE = TRUE
+    Value f2(false);
+    Value f3(false);
+    ASSERT(om.evaluate(&f2,&f3) == 0); //expecting FALSE or FALSE = FALSE
+}
+void thenMinTest(){
+    std::cout << "ThenMin test" << std::endl;
+    ThenMini tm;
+    Value t(true);
+    Value f(false);
+    ASSERT(tm.evaluate(&t,&f) == 0);
+}
 
 int main() {
     valueModelTest();
     andMinTest();
     andMultTest();
+    orMaxTest();
+    thenMinTest();
     return 0;
 }
