@@ -9,4 +9,4 @@ file(
         src/*
 )
 
-add_executable(fuzzy ${sources} src/fuzzy/Then/ThenMin.h src/fuzzy/Then/Then.h src/fuzzy/And/AndMult.h)
+add_executable(fuzzy ${sources})
