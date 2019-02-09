@@ -15,7 +15,7 @@ namespace fuzzy {
 
     template <class T>
     T AndMult<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) {
-        return l->evaluate()*r->evaluate(); //TODO
+        return l->evaluate()*r->evaluate();
     }
 }
 
