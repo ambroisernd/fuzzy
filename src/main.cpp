@@ -6,6 +6,7 @@
 #include "fuzzy/And/AndMult.h"
 #include "fuzzy/Or/OrMax.h"
 #include "fuzzy/Then/ThenMin.h"
+#include "fuzzy/is/isTriangle.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -47,6 +48,16 @@ void thenMinTest(){
     Value f(false);
     ASSERT(tm.evaluate(&t,&f) == 0);
 }
+void isTriangleTest(){
+    IsTriangle poor(-5,0,5);
+    IsTriangle good(0,5,10);
+    IsTriangle excellent(5,10,15);
+
+    Value food(0);
+    Value service(6);
+    ASSERT(poor.evaluate(&food) == 1); //expecting 1 : 0 is in triangle
+    ASSERT(poor.evaluate(&service) == 0); //expecting 0 : 6 is not in triangle
+}
 
 int main() {
     valueModelTest();
@@ -54,5 +65,6 @@ int main() {
     andMultTest();
     orMaxTest();
     thenMinTest();
+    isTriangleTest();
     return 0;
 }
