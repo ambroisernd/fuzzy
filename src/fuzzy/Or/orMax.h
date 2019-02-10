@@ -5,16 +5,16 @@
 
 namespace fuzzy {
     template <class T = double>
-    class OpOrMax : public Or<T> {
+    class orMax : public Or<T> {
     public:
         virtual T evaluate(core::Expression<T>*, core::Expression<T>*) const ;
 
     };
 
-    using OrMax = OpOrMax<>;
+    using OrMax = orMax<>;
 
     template <class T>
-    T OpOrMax<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
+    T orMax<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
         return std::max(l->evaluate() , r->evaluate());
     }
 }

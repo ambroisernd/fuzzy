@@ -2,10 +2,10 @@
 #define ASSERT_ON
 #include "test.h"
 #include "core/ValueModel.h"
-#include "fuzzy/And/OpAndMin.h"
-#include "fuzzy/And/OpAndMult.h"
-#include "fuzzy/Or/OpOrMax.h"
-#include "fuzzy/Then/OpThenMin.h"
+#include "fuzzy/And/andMin.h"
+#include "fuzzy/And/andMult.h"
+#include "fuzzy/Or/orMax.h"
+#include "fuzzy/Then/thenMin.h"
 #include "fuzzy/is/isTriangle.h"
 using namespace core;
 using namespace fuzzy;
@@ -18,21 +18,21 @@ void valueModelTest()
     ASSERT(v.evaluate() == 10);
 }
 void andMinTest(){
-    std::cout  << "OpAndMin test" << std::endl;
+    std::cout  << "andMin test" << std::endl;
     AndMin am;
     Value t(true);
     Value f(false);
     ASSERT(am.evaluate(&t,&f) == 0) //expecting TRUE and FALSE = FALSE
 }
 void andMultTest(){
-    std::cout << "OpAndMult test" << std::endl;
+    std::cout << "andMult test" << std::endl;
     AndMult am;
     Value l(2);
     Value r(3);
     ASSERT(am.evaluate(&l,&r) == 6); //expecting 2*3=6
 }
 void orMaxTest(){
-    std::cout << "OpOrMax test" << std::endl;
+    std::cout << "orMax test" << std::endl;
     OrMax om;
     Value t(true);
     Value f(false);
@@ -42,7 +42,7 @@ void orMaxTest(){
     ASSERT(om.evaluate(&f2,&f3) == 0); //expecting FALSE or FALSE = FALSE
 }
 void thenMinTest(){
-    std::cout << "OpThenMin test" << std::endl;
+    std::cout << "thenMin test" << std::endl;
     ThenMin tm;
     Value t(true);
     Value f(false);
