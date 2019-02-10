@@ -6,16 +6,16 @@
 
 namespace fuzzy {
     template <class T = double>
-    class ThenMin : public Then<T> {
+    class OpThenMin : public Then<T> {
     public:
         virtual T evaluate(core::Expression<T>*, core::Expression<T>*) const ;
 
     };
 
-    using _ThenMin = ThenMin<>;
+    using ThenMin = OpThenMin<>;
 
     template <class T>
-    T ThenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
+    T OpThenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
         return std::min(l->evaluate() , r->evaluate());
     }
 }
