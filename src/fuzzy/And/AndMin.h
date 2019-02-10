@@ -11,7 +11,7 @@ namespace fuzzy {
 
     };
 
-    using AndMini = AndMin<>;
+    using _AndMin = AndMin<>;
 
     template <class T>
     T AndMin<T>::evaluate( core::Expression<T> *l, core::Expression<T> *r) const {

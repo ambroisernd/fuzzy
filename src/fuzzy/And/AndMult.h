@@ -11,7 +11,7 @@ namespace fuzzy {
 
     };
 
-    using AndMulti = AndMult<>;
+    using _AndMult = AndMult<>;
 
     template <class T>
     T AndMult<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {

@@ -12,7 +12,7 @@ namespace fuzzy {
 
     };
 
-    using ThenMini = ThenMin<>;
+    using _ThenMin = ThenMin<>;
 
     template <class T>
     T ThenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {

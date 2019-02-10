@@ -11,7 +11,7 @@ namespace fuzzy {
 
     };
 
-    using OrMaxi = OrMax<>;
+    using _OrMax = OrMax<>;
 
     template <class T>
     T OrMax<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {

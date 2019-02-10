@@ -19,21 +19,21 @@ void valueModelTest()
 }
 void andMinTest(){
     std::cout  << "AndMin test" << std::endl;
-    AndMini am;
+    _AndMin am;
     Value t(true);
     Value f(false);
     ASSERT(am.evaluate(&t,&f) == 0) //expecting TRUE and FALSE = FALSE
 }
 void andMultTest(){
     std::cout << "AndMult test" << std::endl;
-    AndMulti am;
+    _AndMult am;
     Value l(2);
     Value r(3);
     ASSERT(am.evaluate(&l,&r) == 6); //expecting 2*3=6
 }
 void orMaxTest(){
     std::cout << "OrMax test" << std::endl;
-    OrMaxi om;
+    _OrMax om;
     Value t(true);
     Value f(false);
     ASSERT(om.evaluate(&t,&f) == 1); //expecting TRUE or FALSE = TRUE
@@ -43,7 +43,7 @@ void orMaxTest(){
 }
 void thenMinTest(){
     std::cout << "ThenMin test" << std::endl;
-    ThenMini tm;
+    _ThenMin tm;
     Value t(true);
     Value f(false);
     ASSERT(tm.evaluate(&t,&f) == 0);
