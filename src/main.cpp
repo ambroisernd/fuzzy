@@ -52,7 +52,7 @@ void isTriangleTest(){
     IsTriangle poor(-5,0,5);
     Value food(2);
     Value service(6);
-    ASSERT(poor.evaluate(&food) !=0 ); //expecting true : 0 is in triangle
+    ASSERT(poor.evaluate(&food) !=0 ); //expecting true : 2 is in triangle
     ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in triangle
 }
 
