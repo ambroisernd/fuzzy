@@ -10,9 +10,9 @@ namespace core {
         ValueModel();
         explicit ValueModel(T v);
 
-        virtual T evaluate();
+        virtual T evaluate()const ;
 
-        virtual void setValue(T v);
+        virtual void setValue(T v) ;
 
         ValueModel<T> operator()(T v);
     private:
@@ -30,7 +30,7 @@ namespace core {
     }
 
     template<class T>
-    T ValueModel<T>::evaluate() {
+    T ValueModel<T>::evaluate() const {
         return value;
     }
 

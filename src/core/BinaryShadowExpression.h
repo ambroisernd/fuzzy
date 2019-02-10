@@ -8,13 +8,13 @@ namespace core {
     template <class T>
     class BinaryShadowExpression : public BinaryExpression<T> {
     public:
-        virtual T evaluate(Expression<T> *l, Expression<T> *r);
+        virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
 
     private:
         BinaryExpression<T> target;
     };
     template<class T>
-    T BinaryShadowExpression<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) {
+    T BinaryShadowExpression<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
         if(target!= nullptr){
             return target.evaluate(l,r);
         }

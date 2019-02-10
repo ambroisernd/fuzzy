@@ -7,9 +7,9 @@ namespace core {
     template<class T>
     class BinaryExpressionModel : BinaryExpression<T>, Expression<T> {
     public:
-        virtual T evaluate();
+        virtual T evaluate() const ;
 
-        virtual T evaluate(Expression<T> *l, Expression<T> *r);
+        virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
 
     private:
         Expression<T> left;

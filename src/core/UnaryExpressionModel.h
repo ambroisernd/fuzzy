@@ -6,23 +6,23 @@ namespace core {
     template<class T>
     class UnaryExpressionModel : public UnaryExpression<T>, Expression<T> {
     public:
-        virtual T evaluate();
+        virtual T evaluate() const ;
 
-        virtual T evaluate(Expression<T> *o);
+        virtual T evaluate(Expression<T> *o) const ;
 
     private:
         UnaryExpression<T> operatore;
         Expression<T> operand;
     };
     template<class T>
-    T UnaryExpressionModel<T>::evaluate() {
+    T UnaryExpressionModel<T>::evaluate() const {
         if (operand != nullptr) {
             return evaluate(operand);
         }
     }
 
     template<class T>
-    T UnaryExpressionModel<T>::evaluate(Expression<T> *o) {
+    T UnaryExpressionModel<T>::evaluate(Expression<T> *o) const {
         if (operatore != nullptr) {
             return operatore.evaluate(o);
         }

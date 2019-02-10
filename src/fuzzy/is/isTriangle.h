@@ -12,7 +12,7 @@ namespace fuzzy {
     class isTriangle : public is<T> {
     public:
         isTriangle(T _left, T _peak, T _right);
-        virtual T evaluate(core::Expression<T> *o);
+        virtual T evaluate(core::Expression<T> *o) const ;
         isTriangle<T> operator()(T left, T peak, T right);
 
     private:
@@ -28,7 +28,7 @@ namespace fuzzy {
     isTriangle<T>::isTriangle(T _left, T _peak, T _right) : left(_left), peak(_peak), right(_right){}
 
     template <class T>
-    T isTriangle<T>::evaluate(core::Expression<T> *o) {
+    T isTriangle<T>::evaluate(core::Expression<T> *o) const {
         return std::max(
                 std::min((o->evaluate()-left)/(peak-left), (right-o->evaluate())/(right-peak))
                 ,(T)0);

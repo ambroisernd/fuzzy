@@ -5,7 +5,7 @@ namespace core {
     template<class T>
     class Expression {
     public:
-        virtual T evaluate() = 0;
+        virtual T evaluate() const = 0;
 
 
     };
