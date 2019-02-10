@@ -50,9 +50,6 @@ void thenMinTest(){
 }
 void isTriangleTest(){
     IsTriangle poor(-5,0,5);
-    IsTriangle good(0,5,10);
-    IsTriangle excellent(5,10,15);
-
     Value food(0);
     Value service(6);
     ASSERT(poor.evaluate(&food) == 1); //expecting 1 : 0 is in triangle
