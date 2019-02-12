@@ -8,13 +8,13 @@ namespace core {
     public:
 
         ValueModel();
+
         explicit ValueModel(T v);
 
         virtual T evaluate()const ;
 
         virtual void setValue(T v) ;
 
-        ValueModel<T> operator()(T v);
     private:
         T value;
     };
@@ -32,11 +32,6 @@ namespace core {
     template<class T>
     T ValueModel<T>::evaluate() const {
         return value;
-    }
-
-    template <class T>
-    ValueModel<T> ValueModel<T>::operator()(T v) {
-        return ValueModel(v);
     }
 }
 #endif //FUZZY_VALUEMODEL_H

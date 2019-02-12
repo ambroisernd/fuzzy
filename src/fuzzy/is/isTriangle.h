@@ -13,7 +13,6 @@ namespace fuzzy {
     public:
         isTriangle(T _left, T _peak, T _right);
         virtual T evaluate(core::Expression<T> *o) const ;
-        isTriangle<T> operator()(T left, T peak, T right);
 
     private:
         T left;
@@ -32,11 +31,6 @@ namespace fuzzy {
         return std::max(
                 std::min((o->evaluate()-left)/(peak-left), (right-o->evaluate())/(right-peak))
                 ,(T)0);
-    }
-
-    template <class T>
-    isTriangle<T> isTriangle<T>::operator()(T left, T peak, T right) {
-        return isTriangle(left, peak, right);
     }
 }
 #endif //FUZZY_ISTRIANGLE_H
