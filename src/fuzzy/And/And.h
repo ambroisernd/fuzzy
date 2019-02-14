@@ -4,7 +4,7 @@
 #include "../../core/BinaryExpression.h"
 
 namespace fuzzy {
-    template <class T>
+    template <typename T>
     class And : public core::BinaryExpression<T> {
         };
 

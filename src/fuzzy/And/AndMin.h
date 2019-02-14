@@ -4,17 +4,16 @@
 #include "And.h"
 #include <algorithm>
 namespace fuzzy {
-    template <class T = double>
-    class andMin : public And<T> {
+    template <typename T>
+    class AndMin : public And<T> {
     public:
         virtual T evaluate( core::Expression<T>*, core::Expression<T>*) const ;
 
     };
 
-    using AndMin = andMin<>;
 
-    template <class T>
-    T andMin<T>::evaluate( core::Expression<T> *l, core::Expression<T> *r) const {
+    template <typename T>
+    T AndMin<T>::evaluate( core::Expression<T> *l, core::Expression<T> *r) const {
         return std::min(l->evaluate() , r->evaluate());
     }
 }

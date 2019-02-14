@@ -5,17 +5,16 @@
 #include "Then.h"
 
 namespace fuzzy {
-    template <class T = double>
-    class thenMin : public Then<T> {
+    template <typename T>
+    class ThenMin : public Then<T> {
     public:
         virtual T evaluate(core::Expression<T>*, core::Expression<T>*) const ;
 
     };
 
-    using ThenMin = thenMin<>;
 
-    template <class T>
-    T thenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
+    template <typename T>
+    T ThenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
         return std::min(l->evaluate() , r->evaluate());
     }
 }

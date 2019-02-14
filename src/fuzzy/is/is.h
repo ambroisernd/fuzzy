@@ -7,7 +7,7 @@
 
 #include "../../core/UnaryExpression.h"
 namespace fuzzy{
-    template <class T>
+    template <typename T>
     class is : public core::UnaryExpression<T> {
 
     };

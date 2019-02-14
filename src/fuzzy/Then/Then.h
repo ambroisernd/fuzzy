@@ -3,7 +3,7 @@
 #include "../../core/BinaryExpression.h"
 
 namespace fuzzy{
-    template <class T>
+    template <typename T>
     class Then : public core::BinaryExpression<T> {
 
     };

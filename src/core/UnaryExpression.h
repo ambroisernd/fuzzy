@@ -3,7 +3,7 @@
 
 #include "Expression.h"
 namespace core {
-    template<class T>
+    template<typename T>
     class UnaryExpression {
     public:
         virtual T evaluate(Expression<T> *o) const = 0;

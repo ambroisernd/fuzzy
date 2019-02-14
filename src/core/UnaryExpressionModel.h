@@ -3,7 +3,7 @@
 
 #include "UnaryExpression.h"
 namespace core {
-    template<class T>
+    template<typename T>
     class UnaryExpressionModel : public UnaryExpression<T>, Expression<T> {
     public:
         virtual T evaluate() const ;
@@ -14,14 +14,14 @@ namespace core {
         UnaryExpression<T> operatore;
         Expression<T> operand;
     };
-    template<class T>
+    template<typename T>
     T UnaryExpressionModel<T>::evaluate() const {
         if (operand != nullptr) {
             return evaluate(operand);
         }
     }
 
-    template<class T>
+    template<typename T>
     T UnaryExpressionModel<T>::evaluate(Expression<T> *o) const {
         if (operatore != nullptr) {
             return operatore.evaluate(o);

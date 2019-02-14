@@ -4,7 +4,7 @@
 #include "BinaryExpression.h"
 
 namespace core {
-    template<class T>
+    template<typename T>
     class BinaryExpressionModel : BinaryExpression<T>, Expression<T> {
     public:
         virtual T evaluate() const ;

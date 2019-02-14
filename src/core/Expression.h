@@ -2,7 +2,7 @@
 #define FUZZY_EXPRESSION_H
 
 namespace core {
-    template<class T>
+    template<typename T>
     class Expression {
     public:
         virtual T evaluate() const = 0;

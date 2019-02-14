@@ -8,7 +8,7 @@
 #include <algorithm>
 #include "is.h"
 namespace fuzzy {
-    template <class T = double>
+    template <typename T>
     class isTriangle : public is<T> {
     public:
         isTriangle(T _left, T _peak, T _right);
@@ -21,12 +21,11 @@ namespace fuzzy {
 
     };
 
-    using IsTriangle = isTriangle<>;
 
-    template <class T>
+    template <typename T>
     isTriangle<T>::isTriangle(T _left, T _peak, T _right) : left(_left), peak(_peak), right(_right){}
 
-    template <class T>
+    template <typename T>
     T isTriangle<T>::evaluate(core::Expression<T> *o) const {
         return std::max(
                 std::min((o->evaluate()-left)/(peak-left), (right-o->evaluate())/(right-peak))

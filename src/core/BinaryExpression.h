@@ -4,7 +4,7 @@
 #include "Expression.h"
 namespace core{
 
-    template <class T>
+    template <typename T>
     class BinaryExpression {
     public:
         virtual T evaluate(core::Expression<T> *l, core::Expression<T> *r) const = 0;
