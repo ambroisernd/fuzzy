@@ -58,7 +58,7 @@ void isTriangleTest(){
 }
 
 int main() {
-    valueModelTest();
+    valueModelTest()//no build test
     andMinTest();
     andMultTest();
     orMaxTest();
