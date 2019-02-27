@@ -7,6 +7,7 @@
 #include "fuzzy/Or/OrMax.h"
 #include "fuzzy/Then/ThenMin.h"
 #include "fuzzy/is/isTriangle.h"
+#include "fuzzy/Not/NotMinus1.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -57,6 +58,16 @@ void isTriangleTest(){
     ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in triangle
 }
 
+void notMinusTest(){
+    std::cout << "notMinus test" << std::endl;
+    ValueModel<bool> t(true);
+    NotMinus1<bool> nobool;
+    ASSERT(!nobool.evaluate(&t));
+    ValueModel<float> val(0.75);
+    NotMinus1<float> nofloat;
+    ASSERT(nofloat.evaluate(&val) == 0.25);
+}
+
 int main() {
     valueModelTest();
     andMinTest();
@@ -64,5 +75,6 @@ int main() {
     orMaxTest();
     thenMinTest();
     isTriangleTest();
+    notMinusTest();
     return 0;
 }
