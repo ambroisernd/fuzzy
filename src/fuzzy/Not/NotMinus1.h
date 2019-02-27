@@ -12,7 +12,8 @@ namespace fuzzy{
 
     template <typename T>
     T NotMinus1<T>::evaluate(core::Expression<T> *o) const {
-        return 1.0 - o->evaluate();
+        T object = o->evaluate();
+        return 1.0 - object;
     }
 }
 #endif //FUZZY_NOTMINUS1_H
