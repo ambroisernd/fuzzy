@@ -20,6 +20,9 @@ namespace core {
     };
 
     template <typename T>
+    ValueModel<T>::ValueModel():value(0) {}
+
+    template <typename T>
     ValueModel<T>::ValueModel(T v):value(v) {}
 
     template<typename T>
