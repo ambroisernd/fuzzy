@@ -14,6 +14,7 @@
 #include "fuzzy/is/isGaussian.h"
 
 
+#include "fuzzy/Not/NotMinus1.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -109,6 +110,16 @@ void isBellTest(){
     ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in bell
 }
 
+void notMinusTest(){
+    std::cout << "notMinus test" << std::endl;
+    ValueModel<bool> t(true);
+    NotMinus1<bool> nobool;
+    ASSERT(!nobool.evaluate(&t));
+    ValueModel<float> val(0.75);
+    NotMinus1<float> nofloat;
+    ASSERT(nofloat.evaluate(&val) == 0.25);
+}
+
 int main() {
     valueModelTest();
     andMinTest();
@@ -121,5 +132,6 @@ int main() {
     isTrapezeRightTest();
     isGaussianTest();
     isBellTest();
+    notMinusTest();
     return 0;
 }

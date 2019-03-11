@@ -29,7 +29,7 @@ namespace fuzzy {
     T isTriangle<T>::evaluate(core::Expression<T> *o) const {
         T object = o->evaluate();
         return std::max(
-                std::min((object-left)/(peak-left), (right-o->evaluate())/(right-peak))
+                std::min((object-left)/(peak-left), (right-object)/(right-peak))
                 ,(T)0);
     }
 }

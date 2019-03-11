@@ -15,7 +15,9 @@ namespace fuzzy {
 
     template <typename T>
     T ThenMin<T>::evaluate(core::Expression<T> *l, core::Expression<T> *r) const {
-        return std::min(l->evaluate() , r->evaluate());
+        T left = l->evaluate();
+        T right = r->evaluate();
+        return std::min(left , right);
     }
 }
 
