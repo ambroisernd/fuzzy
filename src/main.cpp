@@ -15,6 +15,7 @@
 
 
 #include "fuzzy/Not/NotMinus1.h"
+#include "fuzzy/Agg/AggMax.h"
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -120,6 +121,17 @@ void notMinusTest(){
     ASSERT(nofloat.evaluate(&val) == 0.25);
 }
 
+void aggregationMax(){
+    std::cout << "aggregationMax test" << std::endl;
+    AggMax<float> ag;
+    ValueModel<float> t(0.75);
+    ValueModel<float> f(0.5);
+    ASSERT(ag.evaluate(&t,&f) == 0.75); //expecting TRUE or FALSE = TRUE
+    ValueModel<float> f2(0.1);
+    ValueModel<float> f3(10);
+    ASSERT(ag.evaluate(&f2,&f3) == 10); //expecting FALSE or FALSE = FALSE
+}
+
 int main() {
     valueModelTest();
     andMinTest();
@@ -133,5 +145,6 @@ int main() {
     isGaussianTest();
     isBellTest();
     notMinusTest();
+    aggregationMax();
     return 0;
 }
