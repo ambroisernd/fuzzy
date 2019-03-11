@@ -8,7 +8,7 @@
 #include <set>
 namespace core{
     template <typename T>
-    class ExpressionFactory : public Expression<T>{
+    class ExpressionFactory{
     private:
         std::set<Expression<T>*> memory;
     public:
@@ -25,12 +25,12 @@ namespace core{
     }
     template <typename T>
     Expression<T>* ExpressionFactory<T>::newUnary(core::UnaryExpression<T> *ope, core::Expression<T> *o) {
-        return hold(new UnaryExpressionModel<T>(ope, o));
+        return Hold(new UnaryExpressionModel<T>(ope, o));
     }
     template <typename T>
     Expression<T>* ExpressionFactory<T>::newBinary(core::BinaryExpression<T> *ope, core::Expression<T> *l,
                                                    core::Expression<T> *r) {
-        return hold(new BinaryExpressionModel<T>(ope, l, r));
+        return Hold(new BinaryExpressionModel<T>(ope, l, r));
     }
 
     template<typename T>
