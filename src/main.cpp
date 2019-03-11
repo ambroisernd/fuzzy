@@ -16,6 +16,8 @@
 
 #include "fuzzy/Not/NotMinus1.h"
 #include "fuzzy/Agg/AggMax.h"
+#include "fuzzy/FuzzyFactory.h"
+
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -132,6 +134,17 @@ void aggregationMax(){
     ASSERT(ag.evaluate(&f2,&f3) == 10); //expecting FALSE or FALSE = FALSE
 }
 
+void fuzzyFactoryTest(){
+    std::cout << "fuzzyFactory test"<<std::endl;
+    NotMinus1<float> opNot;
+    AndMin<float> opAnd;
+    OrMax<float> opOr;
+    ThenMin<float> opThen;
+    AggMax<float> opAgg;
+    fuzzy::FuzzyFactory<float> f(&opNot, &opAnd, &opOr, &opThen, &opAgg);
+    //...
+}
+
 int main() {
     valueModelTest();
     andMinTest();
@@ -146,5 +159,6 @@ int main() {
     isBellTest();
     notMinusTest();
     aggregationMax();
+    fuzzyFactoryTest();
     return 0;
 }
