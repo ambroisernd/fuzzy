@@ -35,8 +35,8 @@ namespace core{
 
     template<typename T>
     ExpressionFactory<T>::~ExpressionFactory() {
-        for (Expression<T> o : this->memory) {
-            delete(o);
+        for (Expression<T> *o : this->memory) {
+            delete o;
         }
     }
 }
