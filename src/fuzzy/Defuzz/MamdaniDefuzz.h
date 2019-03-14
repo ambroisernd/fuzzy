@@ -9,6 +9,9 @@ namespace fuzzy{
     private:
 
     public:
+        virtual T evaluate(core::Expression<T>* l, core::Expression<T>* r);
+        virtual T defuzz();
     };
+
 }
 #endif //FUZZY_MAMDANIDEFUZZ_H
