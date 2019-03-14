@@ -9,12 +9,22 @@
 #include "Not/NotMinus1.h"
 #include "Or/OrMax.h"
 #include "Then/ThenMin.h"
+#include "is/isBell.h"
+#include "is/isGaussian.h"
+#include "is/isTrapeze.h"
+#include "is/isTrapezeLeft.h"
+#include "is/isTrapezeRight.h"
 
 typedef fuzzy::AggMax<NUMERIC> AggMax;
 typedef fuzzy::AndMin<NUMERIC> AndMin;
 typedef fuzzy::AndMult<NUMERIC> AndMult;
 typedef fuzzy::MamdaniDefuzz<NUMERIC> MamdaniDefuzz;
 typedef fuzzy::isTriangle<NUMERIC> isTriangle;
+typedef fuzzy::isBell<NUMERIC> isBell;
+typedef fuzzy::isGaussian<NUMERIC> isGaussian;
+typedef fuzzy::isTrapeze<NUMERIC> isTrapeze;
+typedef fuzzy::isTrapezeLeft<NUMERIC> isTrapezeLeft;
+typedef fuzzy::isTrapezeRight<NUMERIC> isTrapezeRight;
 typedef fuzzy::NotMinus1<NUMERIC> NotMinus1;
 typedef fuzzy::OrMax<NUMERIC> OrMax;
 typedef fuzzy::ThenMin<NUMERIC> ThenMin;
