@@ -12,6 +12,7 @@
 #include "fuzzy/is/isTrapezeRight.h"
 #include "fuzzy/is/isBell.h"
 #include "fuzzy/is/isGaussian.h"
+#include "fuzzy/Agg/AggPlus.h"
 
 
 #include "fuzzy/Not/NotMinus1.h"
@@ -121,15 +122,37 @@ void notMinusTest(){
     ASSERT(nofloat.evaluate(&val) == 0.25);
 }
 
-void aggregationMax(){
+void aggregationMaxTest(){
     std::cout << "aggregationMax test" << std::endl;
     AggMax<float> ag;
     ValueModel<float> t(0.75);
     ValueModel<float> f(0.5);
-    ASSERT(ag.evaluate(&t,&f) == 0.75); //expecting TRUE or FALSE = TRUE
+    ASSERT(ag.evaluate(&t,&f) == 0.75);
     ValueModel<float> f2(0.1);
     ValueModel<float> f3(10);
-    ASSERT(ag.evaluate(&f2,&f3) == 10); //expecting FALSE or FALSE = FALSE
+    ASSERT(ag.evaluate(&f2,&f3) == 10);
+}
+
+void aggregationPlusTest(){
+    std::cout << "aggregationPlus test" << std::endl;
+    AggPlus<float> ag;
+    ValueModel<float> t(0.7);
+    ValueModel<float> f(0.3);
+    ASSERT(ag.evaluate(&t,&f) == 1.0);
+    ValueModel<float> a(1.5);
+    ValueModel<float> b(0.5);
+    ASSERT(ag.evaluate(&a,&b) == 2.0);
+}
+
+void orPlusTest(){
+    std::cout << "orPlus test" << std::endl;
+    AggPlus<float> ag;
+    ValueModel<float> t(0.7);
+    ValueModel<float> f(0.3);
+    ASSERT(ag.evaluate(&t,&f) == 1.0);
+    ValueModel<float> a(1.5);
+    ValueModel<float> b(0.5);
+    ASSERT(ag.evaluate(&a,&b) == 2.0);
 }
 
 int main() {
@@ -145,6 +168,8 @@ int main() {
     isGaussianTest();
     isBellTest();
     notMinusTest();
-    aggregationMax();
+    aggregationMaxTest();
+    aggregationPlusTest();
+    orPlusTest();
     return 0;
 }
