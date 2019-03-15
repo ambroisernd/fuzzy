@@ -191,6 +191,13 @@ void useCase(){
 
     Expression<double> *system = f.newMamdani(&tips, r);
 
+    float s;
+    while(true){
+        std::cout << "service: "; cin>>s;
+        service.setValue(s);
+        cout << "tips-> " << system->evaluate() << endl;
+    }
+
 }
 
 int main() {
@@ -208,5 +215,6 @@ int main() {
     notMinusTest();
     aggregationMax();
     fuzzyFactoryTest();
+    useCase();
     return 0;
 }
