@@ -156,9 +156,40 @@ void useCase(){
     OrMax<double> opOr;
     AggMax<double> opgAgg;
     ThenMin<double> opgThen;
-    CogDefuzz<double> *opDefuzz;
+    CogDefuzz<double> *opDefuzz(0, 25, 1);
 
     FuzzyFactory<double> f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, opDefuzz);
+    isTriangle<double> poor(-5, 0, -5);
+    isTriangle<double> good(0, 5, 10);
+    isTriangle<double> excellent(5, 10, 15);
+
+    isTriangle<double> cheap(0, 5, 10);
+    isTriangle<double> average(10, 15, 20);
+    isTriangle<double> generous(20, 25, 30);
+
+    ValueModel<double> service(0);
+    ValueModel<double> food(0);
+    ValueModel<double> tips(0);
+
+    Expression<double> *r =
+            f.newAgg(
+                    f.newAgg(
+                            f.newThen(
+                                    f.newIs(&poor, &service),
+                                    f.newIs(&cheap, &tips)
+                                    ),
+                                    f.newThen(
+                                            f.newIs(&good, &service),
+                                            f.newIs(&average, &tips)
+                                            )
+                            ),
+                            f.newThen(
+                                    f.newIs(&excellent, &service),
+                                    f.newIs(&generous, &tips)
+                                    )
+                    );
+
+    Expression<double> *system = f.newMamdani(&tips, r);
 
 }
 
