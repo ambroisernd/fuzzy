@@ -15,12 +15,12 @@ namespace fuzzy{
     template <typename T>
     class FuzzyFactory : public core::ExpressionFactory<T>{
     private:
-        core::UnaryShadowExpression<T>* opNot;
-        core::BinaryShadowExpression<T>* opAnd;
-        core::BinaryShadowExpression<T>* opAgg;
-        core::BinaryShadowExpression<T>* opOr;
-        core::BinaryShadowExpression<T>* opThen;
-        core::BinaryShadowExpression<T>* opMamdani;
+        core::UnaryShadowExpression<T> opNot;
+        core::BinaryShadowExpression<T> opAnd;
+        core::BinaryShadowExpression<T> opAgg;
+        core::BinaryShadowExpression<T> opOr;
+        core::BinaryShadowExpression<T> opThen;
+        core::BinaryShadowExpression<T> opMamdani;
     public:
         FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
                      Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani);

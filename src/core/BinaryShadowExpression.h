@@ -8,6 +8,8 @@ namespace core {
     template <typename T>
     class BinaryShadowExpression : public BinaryExpression<T> {
     public:
+        explicit BinaryShadowExpression(BinaryExpression <T> *target);
+
         virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
 
     private:
@@ -26,5 +28,8 @@ namespace core {
     void BinaryShadowExpression<T>::setTarget(const BinaryExpression<T> *target) {
         BinaryShadowExpression::target = target;
     }
+
+    template<typename T>
+    BinaryShadowExpression<T>::BinaryShadowExpression(BinaryExpression <T> *target):target(target) {}
 }
 #endif //FUZZY_BINARYSHADOWEXPRESSION_H
