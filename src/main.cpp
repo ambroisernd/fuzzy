@@ -18,6 +18,10 @@
 #include "fuzzy/Agg/AggMax.h"
 #include "fuzzy/FuzzyFactory.h"
 
+#include "fuzzy/Defuzz/CogDefuzz.h"
+
+#include "fuzzy/fuzzy.h"
+
 using namespace core;
 using namespace fuzzy;
 void valueModelTest()
@@ -144,6 +148,18 @@ void fuzzyFactoryTest(){
     //fuzzy::FuzzyFactory<float> f(&opNot, &opAnd, &opOr, &opThen, &opAgg);
     //...
     //TODO : implement COGDefuzz
+}
+
+void useCase(){
+    NotMinus1<double> opNot;
+    AndMin<double> opAnd;
+    OrMax<double> opOr;
+    AggMax<double> opgAgg;
+    ThenMin<double> opgThen;
+    CogDefuzz<double> * opDefuzz;
+
+    FuzzyFactory<double> f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, opDefuzz);
+
 }
 
 int main() {

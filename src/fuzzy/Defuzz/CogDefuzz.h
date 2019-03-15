@@ -5,7 +5,7 @@
 #include "MamdaniDefuzz.h"
 namespace fuzzy{
     template <typename T>
-    class CogDefuzz : MamdaniDefuzz<T>{
+    class CogDefuzz : public MamdaniDefuzz<T>{
     private:
 
     public:

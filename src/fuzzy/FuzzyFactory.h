@@ -22,9 +22,8 @@ namespace fuzzy{
         core::BinaryShadowExpression<T>* opThen;
         core::BinaryShadowExpression<T>* opMamdani;
     public:
-        FuzzyFactory(Not<T> *opNot, And<T> *opAnd,
-                     Agg<T> *opAgg, Or<T> *opOr,
-                     Then<T> *opThen, MamdaniDefuzz<T> *opMamdani);
+        FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                     Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani);
 
         core::Expression<T>* newAnd(core::Expression<T>* l, core::Expression<T>* r);
         core::Expression<T>* newOr(core::Expression<T>* l, core::Expression<T>* r);
@@ -110,10 +109,9 @@ namespace fuzzy{
     }
 
     template<typename T>
-    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd,
-                                  Agg<T> *opAgg, Or<T> *opOr,
-                                  Then<T> *opThen, MamdaniDefuzz<T> *opMamdani)
-            :opNot(opNot), opAnd(opAnd), opAgg(opAgg), opOr(opOr), opThen(opThen), opMamdani(opMamdani) {}
+    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                                  Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani)
+            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani) {}
 
 
 }
