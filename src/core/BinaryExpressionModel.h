@@ -5,7 +5,7 @@
 
 namespace core {
     template<typename T>
-    class BinaryExpressionModel : BinaryExpression<T>, Expression<T> {
+    class BinaryExpressionModel : public BinaryExpression<T>, Expression<T> {
     public:
         virtual T evaluate() const ;
 

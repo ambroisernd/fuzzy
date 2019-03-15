@@ -156,7 +156,7 @@ void useCase(){
     OrMax<double> opOr;
     AggMax<double> opgAgg;
     ThenMin<double> opgThen;
-    CogDefuzz<double> * opDefuzz;
+    CogDefuzz<double> *opDefuzz;
 
     FuzzyFactory<double> f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, opDefuzz);
 
