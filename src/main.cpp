@@ -12,6 +12,7 @@
 #include "fuzzy/is/isTrapezeRight.h"
 #include "fuzzy/is/isBell.h"
 #include "fuzzy/is/isGaussian.h"
+#include "fuzzy/Agg/AggPlus.h"
 
 
 #include "fuzzy/Not/NotMinus1.h"
@@ -127,15 +128,37 @@ void notMinusTest(){
     ASSERT(nofloat.evaluate(&val) == 0.25);
 }
 
-void aggregationMax(){
+void aggregationMaxTest(){
     std::cout << "aggregationMax test" << std::endl;
     AggMax ag;
     ValueModel t(0.75);
     ValueModel f(0.5);
-    ASSERT(ag.evaluate(&t,&f) == 0.75); //expecting TRUE or FALSE = TRUE
+    ASSERT(ag.evaluate(&t,&f) == 0.75);
     ValueModel f2(0.1);
     ValueModel f3(10);
-    ASSERT(ag.evaluate(&f2,&f3) == 10); //expecting FALSE or FALSE = FALSE
+    ASSERT(ag.evaluate(&f2,&f3) == 10);
+}
+
+void aggregationPlusTest(){
+    std::cout << "aggregationPlus test" << std::endl;
+    AggPlus ag;
+    ValueModel t(0.7);
+    ValueModel f(0.3);
+    ASSERT(ag.evaluate(&t,&f) == 1.0);
+    ValueModel a(1.5);
+    ValueModel b(0.5);
+    ASSERT(ag.evaluate(&a,&b) == 2.0);
+}
+
+void orPlusTest(){
+    std::cout << "orPlus test" << std::endl;
+    OrPlus ag;
+    ValueModel t(0.7);
+    ValueModel f(0.3);
+    ASSERT(ag.evaluate(&t,&f) == 1.0);
+    ValueModel a(1.5);
+    ValueModel b(0.5);
+    ASSERT(ag.evaluate(&a,&b) == 2.0);
 }
 
 void useCase(){
@@ -201,7 +224,9 @@ int main() {
     isGaussianTest();
     isBellTest();
     notMinusTest();
-    aggregationMax();
+    aggregationMaxTest();
+    aggregationPlusTest();
+    orPlusTest();
     useCase();
     return 0;
 }
