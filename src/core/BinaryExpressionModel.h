@@ -5,22 +5,28 @@
 
 namespace core {
     template<typename T>
-    class BinaryExpressionModel : public BinaryExpression<T>, Expression<T> {
+    class BinaryExpressionModel : public BinaryExpression<T>, public Expression<T> {
     public:
+
         virtual T evaluate() const ;
 
         virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
 
     private:
-        Expression<T> left;
-        Expression<T> right;
-        BinaryExpression<T> operatore;
+    public:
+        BinaryExpressionModel(BinaryExpression <T> *operatore, Expression <T> *left, Expression <T> *right);
+
+    private:
+        BinaryExpression<T>* operatore;
+        Expression<T>* left;
+        Expression<T>* right;
+
     };
 
     template<typename T>
     T BinaryExpressionModel<T>::evaluate() const {
         if(operatore != nullptr){
-            return operatore.evaluate(left, right);
+            return operatore->evaluate(left, right);
         }
     }
 
@@ -30,6 +36,11 @@ namespace core {
             return evaluate(left, right);
         }
     }
+
+    template<typename T>
+    BinaryExpressionModel<T>::BinaryExpressionModel(BinaryExpression <T> *operatore, Expression <T> *left,
+                                                    Expression <T> *right):operatore(operatore), left(left),
+                                                                           right(right) {}
 }
 
 #endif //FUZZY_BINARYEXPRESSIONMODEL_H

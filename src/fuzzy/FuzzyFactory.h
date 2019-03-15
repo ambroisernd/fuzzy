@@ -15,12 +15,12 @@ namespace fuzzy{
     template <typename T>
     class FuzzyFactory : public core::ExpressionFactory<T>{
     private:
-        core::UnaryShadowExpression<T> *opNot;
-        core::BinaryShadowExpression<T> *opAnd;
-        core::BinaryShadowExpression<T> *opAgg;
-        core::BinaryShadowExpression<T> *opOr;
-        core::BinaryShadowExpression<T> *opThen;
-        core::BinaryShadowExpression<T> *opMamdani;
+        core::UnaryShadowExpression<T> opNot;
+        core::BinaryShadowExpression<T> opAnd;
+        core::BinaryShadowExpression<T> opAgg;
+        core::BinaryShadowExpression<T> opOr;
+        core::BinaryShadowExpression<T> opThen;
+        core::BinaryShadowExpression<T> opMamdani;
     public:
         FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
                      Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani);
@@ -45,27 +45,27 @@ namespace fuzzy{
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newAnd(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opAnd, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opAnd, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newOr(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opOr, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opOr, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newThen(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opThen, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opThen, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newNot(core::Expression<T>* o) {
-        return newUnary(opNot, o);
+        return core::ExpressionFactory<T>::newUnary(&opNot, o);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newIs(is<T>* op, core::Expression<T> * o) {
-        return newUnary(op, o);
+        return core::ExpressionFactory<T>::newUnary(op, o);
     }
 
     template<typename T>
@@ -90,7 +90,7 @@ namespace fuzzy{
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newAgg(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opAgg, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opAgg, l, r);
     }
 
     template<typename T>
@@ -100,7 +100,7 @@ namespace fuzzy{
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newMamdani(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opMamdani, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opMamdani, l, r);
     }
 
     template<typename T>

@@ -156,9 +156,9 @@ void useCase(){
     OrMax<double> opOr;
     AggMax<double> opgAgg;
     ThenMin<double> opgThen;
-    CogDefuzz<double> *opDefuzz(0, 25, 1);
+    CogDefuzz<double> opDefuzz(0, 25, 1);
 
-    FuzzyFactory<double> f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, opDefuzz);
+    FuzzyFactory<double> f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
     isTriangle<double> poor(-5, 0, -5);
     isTriangle<double> good(0, 5, 10);
     isTriangle<double> excellent(5, 10, 15);
