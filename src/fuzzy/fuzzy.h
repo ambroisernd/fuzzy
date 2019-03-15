@@ -31,5 +31,6 @@ typedef fuzzy::OrMax<NUMERIC> OrMax;
 typedef fuzzy::ThenMin<NUMERIC> ThenMin;
 typedef fuzzy::MamdaniDefuzz<NUMERIC> MamdaniDefuzz;
 typedef fuzzy::CogDefuzz<NUMERIC> CogDefuzz;
+typedef fuzzy::FuzzyFactory<NUMERIC> FuzzyFactory;
 
 #endif //FUZZY_FUZZY_H
