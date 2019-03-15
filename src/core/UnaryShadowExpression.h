@@ -10,6 +10,8 @@ namespace core {
     template<typename T>
     class UnaryShadowExpression : public UnaryExpression<T> {
     public:
+        explicit UnaryShadowExpression(UnaryExpression <T> *target );
+
         virtual T evaluate(Expression<T> *o) const ;
     private:
         UnaryExpression<T>* target;
@@ -27,6 +29,9 @@ namespace core {
     void UnaryShadowExpression<T>::setTarget(const UnaryExpression<T> *target) {
         UnaryShadowExpression::target = target;
     }
+
+    template<typename T>
+    UnaryShadowExpression<T>::UnaryShadowExpression(UnaryExpression <T> *target):target(target) {}
 }
 
 #endif //FUZZY_UNARYSHADOWEXPRESSION_H

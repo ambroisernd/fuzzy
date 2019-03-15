@@ -9,25 +9,27 @@
 #include "../core/BinaryShadowExpression.h"
 #include "../core/UnaryShadowExpression.h"
 #include "Agg/Agg.h"
+#include "Defuzz/MamdaniDefuzz.h"
 
 namespace fuzzy{
     template <typename T>
     class FuzzyFactory : public core::ExpressionFactory<T>{
     private:
-        core::UnaryShadowExpression<T>* opNot;
-        core::BinaryShadowExpression<T>* opAnd;
-        core::BinaryShadowExpression<T>* opAgg;
-        core::BinaryShadowExpression<T>* opOr;
-        core::BinaryShadowExpression<T>* opThen;
-        //TODO add Defuzz in both constructor and private member
+        core::UnaryShadowExpression<T> opNot;
+        core::BinaryShadowExpression<T> opAnd;
+        core::BinaryShadowExpression<T> opAgg;
+        core::BinaryShadowExpression<T> opOr;
+        core::BinaryShadowExpression<T> opThen;
+        core::BinaryShadowExpression<T> opMamdani;
     public:
-        FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr, Then<T> *opThen, Agg<T> *opAgg);
+        FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                     Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani);
 
         core::Expression<T>* newAnd(core::Expression<T>* l, core::Expression<T>* r);
         core::Expression<T>* newOr(core::Expression<T>* l, core::Expression<T>* r);
         core::Expression<T>* newThen(core::Expression<T>* l, core::Expression<T>* r);
         core::Expression<T>* newAgg(core::Expression<T>* l, core::Expression<T>* r);
-        //TODO newDefuzz
+        core::Expression<T>* newMamdani(core::Expression<T> *l, core::Expression<T> *r);
         core::Expression<T>* newNot(core::Expression<T>* o);
         core::Expression<T>* newIs(fuzzy::is<T>* op, core::Expression<T> * o);
 
@@ -36,34 +38,34 @@ namespace fuzzy{
         void changeThen(Then<T> *op);
         void changeNot(Not<T> *op);
         void changeAgg(Agg<T> *op);
+        void changeMamdani(MamdaniDefuzz<T> *op);
     };
 
-    template<typename T>
-    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr, Then<T> *opThen, Agg<T> *opAgg) {}
+
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newAnd(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opAnd, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opAnd, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newOr(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opOr, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opOr, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newThen(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opThen, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opThen, l, r);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newNot(core::Expression<T>* o) {
-        return newUnary(opNot, o);
+        return core::ExpressionFactory<T>::newUnary(&opNot, o);
     }
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newIs(is<T>* op, core::Expression<T> * o) {
-        return newUnary(op, o);
+        return core::ExpressionFactory<T>::newUnary(op, o);
     }
 
     template<typename T>
@@ -88,13 +90,28 @@ namespace fuzzy{
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newAgg(core::Expression<T> *l, core::Expression<T> *r) {
-        return newBinary(opAgg, l, r);
+        return core::ExpressionFactory<T>::newBinary(&opAgg, l, r);
     }
 
     template<typename T>
     void FuzzyFactory<T>::changeAgg(Agg<T> *op) {
         opAgg->setTarget(op);
     }
+
+    template<typename T>
+    core::Expression<T> *FuzzyFactory<T>::newMamdani(core::Expression<T> *l, core::Expression<T> *r) {
+        return core::ExpressionFactory<T>::newBinary(&opMamdani, l, r);
+    }
+
+    template<typename T>
+    void FuzzyFactory<T>::changeMamdani(MamdaniDefuzz<T> *op) {
+        opMamdani->setTarget(op);
+    }
+
+    template<typename T>
+    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                                  Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani)
+            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani) {}
 
 
 }
