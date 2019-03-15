@@ -15,6 +15,7 @@
 #include "is/isTrapezeLeft.h"
 #include "is/isTrapezeRight.h"
 #include "Defuzz/CogDefuzz.h"
+#include "Or/OrPlus.h"
 
 typedef fuzzy::AggMax<NUMERIC> AggMax;
 typedef fuzzy::AndMin<NUMERIC> AndMin;
@@ -32,5 +33,7 @@ typedef fuzzy::ThenMin<NUMERIC> ThenMin;
 typedef fuzzy::MamdaniDefuzz<NUMERIC> MamdaniDefuzz;
 typedef fuzzy::CogDefuzz<NUMERIC> CogDefuzz;
 typedef fuzzy::FuzzyFactory<NUMERIC> FuzzyFactory;
+typedef fuzzy::AggPlus<NUMERIC> AggPlus;
+typedef fuzzy::OrPlus<NUMERIC> OrPlus;
 
 #endif //FUZZY_FUZZY_H
