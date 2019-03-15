@@ -7,6 +7,13 @@
 #include "fuzzy/Or/OrMax.h"
 #include "fuzzy/Then/ThenMin.h"
 #include "fuzzy/is/isTriangle.h"
+#include "fuzzy/is/isTrapeze.h"
+#include "fuzzy/is/isTrapezeLeft.h"
+#include "fuzzy/is/isTrapezeRight.h"
+#include "fuzzy/is/isBell.h"
+#include "fuzzy/is/isGaussian.h"
+
+
 #include "fuzzy/Not/NotMinus1.h"
 #include "fuzzy/Agg/AggMax.h"
 #include "fuzzy/FuzzyFactory.h"
@@ -61,6 +68,51 @@ void isTriangleTest(){
     ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in triangle
 }
 
+void isTrapezeTest(){
+    std::cout << "isTrapeze test" << std::endl;
+    isTrapeze<float> poor(-5,-1,1,5);
+    ValueModel<float> food(2);
+    ValueModel<float> service(6);
+    ASSERT(poor.evaluate(&food) != 0); //expecting true : 2 is in trapeze
+    ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in trapeze
+}
+
+void isTrapezeLeftTest(){
+    std::cout << "isTrapezeLeft test" << std::endl;
+    isTrapezeLeft<float> poor(0,5);
+    ValueModel<float> food(2);
+    ValueModel<float > service(6);
+    ASSERT(poor.evaluate(&food) != 0); //expecting true : 2 is in lefttrapeze
+    ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in lefttrapeze
+}
+
+void isTrapezeRightTest(){
+    std::cout << "isTrapezeRight test" << std::endl;
+    isTrapezeRight<float> poor(-5,0);
+    ValueModel<float> food(2);
+    ValueModel<float > service(-6);
+    ASSERT(poor.evaluate(&food) != 0); //expecting true : 2 is in righttrapeze
+    ASSERT(poor.evaluate(&service) == 0); //expecting flase : -6 is not in righttrapeze
+}
+
+void isGaussianTest(){
+    std::cout << "isGaussian test" << std::endl;
+    isGaussian<float> poor(2,5);
+    ValueModel<float> food(2);
+    ValueModel<float> service(6);
+    ASSERT(poor.evaluate(&food) != 0); //expecting true : 2 is in gaussian
+    ASSERT(poor.evaluate(&service) != 0); //expecting true : 6 is in gaussian
+}
+
+void isBellTest(){
+    std::cout << "isBell test" << std::endl;
+    isBell<float> poor(0,5,0);
+    ValueModel<float> food(2);
+    ValueModel<float> service(6);
+    ASSERT(poor.evaluate(&food) == 0); //expecting false : 2 is in bell
+    ASSERT(poor.evaluate(&service) == 0); //expecting false : 6 is not in bell
+}
+
 void notMinusTest(){
     std::cout << "notMinus test" << std::endl;
     ValueModel<bool> t(true);
@@ -101,6 +153,11 @@ int main() {
     orMaxTest();
     thenMinTest();
     isTriangleTest();
+    isTrapezeTest();
+    isTrapezeLeftTest();
+    isTrapezeRightTest();
+    isGaussianTest();
+    isBellTest();
     notMinusTest();
     aggregationMax();
     fuzzyFactoryTest();
