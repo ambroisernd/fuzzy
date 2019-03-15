@@ -89,8 +89,9 @@ void fuzzyFactoryTest(){
     OrMax<float> opOr;
     ThenMin<float> opThen;
     AggMax<float> opAgg;
-    fuzzy::FuzzyFactory<float> f(&opNot, &opAnd, &opOr, &opThen, &opAgg);
+    //fuzzy::FuzzyFactory<float> f(&opNot, &opAnd, &opOr, &opThen, &opAgg);
     //...
+    //TODO : implement COGDefuzz
 }
 
 int main() {
