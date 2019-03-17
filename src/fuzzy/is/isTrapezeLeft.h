@@ -1,9 +1,3 @@
-//
-// Created by Gauthier on 27/02/2019.
-// _______
-//        \__
-//
-
 #ifndef FUZZY_ISTRAPEZELEFT_H
 #define FUZZY_ISTRAPEZELEFT_H
 

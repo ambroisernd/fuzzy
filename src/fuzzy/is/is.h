@@ -1,7 +1,3 @@
-//
-// Created by ambroise on 10/02/19.
-//
-
 #ifndef FUZZY_IS_H
 #define FUZZY_IS_H
 

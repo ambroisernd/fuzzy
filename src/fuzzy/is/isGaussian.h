@@ -1,7 +1,3 @@
-//
-// Created by Gauthier on 05/03/2019.
-//
-
 #ifndef FUZZY_ISGAUSSIAN_H
 #define FUZZY_ISGAUSSIAN_H
 

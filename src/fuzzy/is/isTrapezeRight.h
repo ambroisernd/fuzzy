@@ -1,7 +1,3 @@
-//
-// Created by Gauthier on 27/02/2019.
-//
-
 #ifndef FUZZY_ISTRAPEZERIGHT_H
 #define FUZZY_ISTRAPEZERIGHT_H
 

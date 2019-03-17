@@ -1,7 +1,3 @@
-//
-// Created by ambroise on 10/02/19.
-//
-
 #ifndef FUZZY_ISTRIANGLE_H
 #define FUZZY_ISTRIANGLE_H
 
