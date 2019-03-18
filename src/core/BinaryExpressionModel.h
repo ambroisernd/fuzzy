@@ -7,15 +7,11 @@ namespace core {
     template<typename T>
     class BinaryExpressionModel : public BinaryExpression<T>, public Expression<T> {
     public:
+        BinaryExpressionModel(BinaryExpression <T> *operatore, Expression <T> *left, Expression <T> *right);
 
         virtual T evaluate() const ;
 
         virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
-
-    private:
-    public:
-        BinaryExpressionModel(BinaryExpression <T> *operatore, Expression <T> *left, Expression <T> *right);
-
     private:
         BinaryExpression<T>* operatore;
         Expression<T>* left;

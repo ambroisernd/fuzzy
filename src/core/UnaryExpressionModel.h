@@ -6,13 +6,11 @@ namespace core {
     template<typename T>
     class UnaryExpressionModel : public UnaryExpression<T>, public Expression<T> {
     public:
+        UnaryExpressionModel(UnaryExpression <T> *operatore, Expression <T> *operand);
+
         virtual T evaluate() const ;
 
         virtual T evaluate(Expression<T> *o) const ;
-
-    private:
-    public:
-        UnaryExpressionModel(UnaryExpression <T> *operatore, Expression <T> *operand);
 
     private:
         UnaryExpression<T> *operatore;
