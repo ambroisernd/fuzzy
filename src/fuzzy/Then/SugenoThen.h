@@ -9,7 +9,7 @@ namespace fuzzy {
     class SugenoThen : public Then<T> {
     public:
         virtual T evaluate(core::Expression<T>*, core::Expression<T>*) const ;
-        virtual T premiseValue();
+        virtual T premiseValue() const;
 
     private:
         T PremiseValue;
