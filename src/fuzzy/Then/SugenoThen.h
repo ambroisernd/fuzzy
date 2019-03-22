@@ -1,9 +1,5 @@
-//
-// Created by Gauthier Masini on 18/03/2019.
-//
-
-#ifndef FUZZY_SUGENODEFUZZ_H
-#define FUZZY_SUGENODEFUZZ_H
+#ifndef FUZZY_SUGENOTHEN_H
+#define FUZZY_SUGENOTHEN_H
 
 #include <algorithm>
 #include "Then.h"
@@ -29,10 +25,10 @@ namespace fuzzy {
     }
 
     template <typename T>
-    T SugenoThen<T>::premiseValue() {
+    T SugenoThen<T>::premiseValue() const{
         return PremiseValue;
     }
 }
 
 
-#endif //FUZZY_SUGENODEFUZZ_H
+#endif //FUZZY_SUGENOTHEN_H
