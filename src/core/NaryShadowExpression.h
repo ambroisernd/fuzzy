@@ -10,7 +10,6 @@ namespace core {
         explicit NaryShadowExpression(NaryExpression <T> *target);
         void setTarget(NaryExpression<T> *target);
         virtual T evaluate(std::vector<core::Expression *> *o) const ;
-        //TODO getTarget
 
     private:
         NaryExpression<T> * target;
