@@ -20,7 +20,7 @@ namespace core{
     template<typename T>
     T NaryExpressionModel<T>::evaluate() const {
         if (!o -> empty()) {
-            return evaluate(left, right);
+            return evaluate(o);
         }
     }
 
