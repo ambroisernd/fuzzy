@@ -16,6 +16,7 @@
 #include "is/isTrapezeRight.h"
 #include "Defuzz/CogDefuzz.h"
 #include "Or/OrPlus.h"
+#include "Defuzz/BoaDefuzz.h"
 #include "Then/SugenoThen.h"
 
 typedef fuzzy::AggMax<NUMERIC> AggMax;
@@ -36,6 +37,7 @@ typedef fuzzy::CogDefuzz<NUMERIC> CogDefuzz;
 typedef fuzzy::FuzzyFactory<NUMERIC> FuzzyFactory;
 typedef fuzzy::AggPlus<NUMERIC> AggPlus;
 typedef fuzzy::OrPlus<NUMERIC> OrPlus;
+typedef fuzzy::BoaDefuzz<NUMERIC> BoaDefuzz;
 typedef fuzzy::SugenoThen<NUMERIC> SugenoThen;
 
 #endif //FUZZY_FUZZY_H
