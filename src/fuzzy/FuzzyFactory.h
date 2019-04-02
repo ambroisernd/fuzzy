@@ -123,7 +123,7 @@ namespace fuzzy{
     template<typename T>
     FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
                                   Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani)
-            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani) {}
+            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani), opSugeno(NULL), opSugenoConclusion(NULL) {}
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newSugeno(vector<core::Expression<T> *> *o) {
