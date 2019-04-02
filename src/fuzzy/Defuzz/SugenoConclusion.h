@@ -20,8 +20,8 @@ namespace fuzzy{
     T SugenoConclusion<T>::evaluate(std::vector<core::Expression<T>*> *o) const{
         T result = 0;
         int i = 0;
-        for(std::vector<core::Expression<T>*>::iterator it = o->begin();it != o->end();it++){
-            T eval = (it*) -> evaluate();
+        for(typename std::vector<core::Expression<T>*>::iterator it = o->begin();it != o->end();it++){
+            T eval = (*it)->evaluate();
             T coeff = coeffs.at(i);
             result += coeff * eval;
             i++;

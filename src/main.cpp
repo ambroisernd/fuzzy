@@ -163,30 +163,24 @@ void orPlusTest(){
 }
 
 void sugenoConclusionTest(){
+    std::cout << "sugenoConclusion test" << std::endl;
     //Construction du vecteur coeffs
-    std::vector<int> coeffs(3);
-    int i = 0;
-    for(std::vector<int>::iterator it = coeffs.begin(); it != coeffs.end(); it++){
-        coeffs.insert(it, i);
-        i++;
+    std::vector<int> coeffs;
+    for(int i=0; i<4; i++){
+        coeffs.push_back(i);
     }
     fuzzy::SugenoConclusion<int> sc(coeffs);
-    core::ValueModel<int> v1(3);
+
+    core::ValueModel<int> v3(3);
     core::ValueModel<int> v2(2);
-    core::ValueModel<int> v3(1);
-    core::ValueModel<int> v4(0);
+    core::ValueModel<int> v1(1);
 
     std::vector<core::Expression<int> *> op;
-    std::vector<core::Expression<int> *>::iterator it = op.begin();
-    op.insert(it,&v1);
-    it++;
-    op.insert(it,&v2);
-    it++;
-    op.insert(it, &v3);
-    it++;
-    op.insert(it, &v4);
+    op.push_back(&v1);
+    op.push_back(&v2);
+    op.push_back(&v3);
 
-    ASSERT(sc.evaluate(&op) == 4);
+    ASSERT(sc.evaluate(&op) == 0*1+1*2+2*3+3);
 
 }
 
