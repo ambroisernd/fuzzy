@@ -24,7 +24,7 @@ namespace fuzzy {
     template <typename T>
     T isGaussian<T>::evaluate(core::Expression<T> *o) const {
         T object = o->evaluate();
-        T a =exp(-(1/2)*pow(((object-c)/t),2));
+        T a = exp(-pow((object-c),2)/(2*pow(t,2)));
         return a;
     }
 }
