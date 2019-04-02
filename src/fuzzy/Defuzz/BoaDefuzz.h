@@ -27,7 +27,7 @@ namespace fuzzy{
             for (int i = 0; i <= start; i++) {
                 left += shape.second.at(i);
             }
-            for (int j = static_cast<int>(shape.first.size() - 1); j >= start; j--) {
+            for (int j = (shape.first.size() - 1); j >= start; j--) {
                 right += shape.second.at(j);
             }
             if (left>right){
@@ -39,7 +39,7 @@ namespace fuzzy{
             start++;
         }while (start<shape.first.size());
 
-        return (2*shape.first.at(start-1)+1)/2;
+        return shape.first.at(start);
     }
 }
 
