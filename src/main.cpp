@@ -168,8 +168,8 @@ void useCase(){
     AggMax opgAgg;
     ThenMin opgThen;
 
-    //CogDefuzz opDefuzz(0, 25, 1);
-    BoaDefuzz opDefuzz(0, 25, 1);
+    CogDefuzz opDefuzz(0, 25, 1);
+    //BoaDefuzz opDefuzz(0, 25, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
     isTriangle poor(-5, 0, 5);
