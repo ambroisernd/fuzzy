@@ -15,14 +15,12 @@ namespace fuzzy{
         T numerateur = 0;
         T denominateur = 0;
         for(std::vector<core::Expression<T>*>::iterator it = o->begin();it != o->end();it++){
-            eval = *it->evaluate();
-
-
+            eval = (*it)->evaluate();
+            SugenoThen sgThen = (**it);
+            denominateur += sgThen.premiseValue();
+            numerateur += sgThen.premiseValue()*eval;
 
         }
-
-
-
         return numerateur/denominateur;
     }
 

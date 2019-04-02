@@ -6,11 +6,11 @@ namespace core{
     template <typename T>
     class NaryExpressionModel : public NaryExpression<T>, public Expression<T>{
     public:
-        NaryExpressionModel(NaryExpressionModel<T> *op, std::vector<Expression<T> *> *o);
+        NaryExpressionModel(NaryExpression<T> *op, std::vector<Expression<T> *> *o);
 
         virtual T evaluate() const;
 
-        virtual T evaluate(std::vector<NaryExpression<T> *> *o) const ;
+        virtual T evaluate(std::vector<Expression<T> *> *o) const ;
     private:
         NaryExpression<T>* operatore;
         std::vector<Expression<T>*>* o;
