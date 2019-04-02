@@ -6,6 +6,7 @@ namespace fuzzy{
     template <typename T>
     class BoaDefuzz : public MamdaniDefuzz<T>{
     private:
+        T step;
     public:
         BoaDefuzz(T min, T max, T step);
 
@@ -31,7 +32,7 @@ namespace fuzzy{
                 right += shape.second.at(j);
             }
             if (left>right){
-                return (2*shape.first.at(start)+1)/2;
+                return (shape.first.at(start)+shape.first.at(start-1))/2;
             }
             else if(left==right){
                 return shape.first.at(start);
