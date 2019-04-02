@@ -172,7 +172,7 @@ void useCase(){
     //BoaDefuzz opDefuzz(0, 25, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
-    isTriangle poor(-5, 0, -5);
+    isTriangle poor(-5, 0, 5);
     isTriangle good(0, 5, 10);
     isTriangle excellent(5, 10, 15);
 
