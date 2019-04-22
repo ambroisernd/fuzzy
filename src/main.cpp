@@ -168,14 +168,23 @@ void useCase(){
     AggMax opgAgg;
     ThenMin opgThen;
 
-    CogDefuzz opDefuzz(0, 25, 1);
-    //BoaDefuzz opDefuzz(0, 25, 1);
+    CogDefuzz opDefuzz(0, 30, 1);
+    //BoaDefuzz opDefuzz(0, 30, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
+
+    //service
     isGaussian poor(0, 1.5);
     isGaussian good(5, 1.5);
     isGaussian excellent(10, 1.5);
 
+    //food
+    isTrapezeLeft rancid(1, 3);
+    isTrapezeRight delicious(7,9);
+    //trapère rancid 0 0 1 3
+    //trapere delicious 7 9 10 10
+
+    //tips
     isTriangle cheap(0, 5, 10);
     isTriangle average(10, 15, 20);
     isTriangle generous(20, 25, 30);
@@ -184,30 +193,37 @@ void useCase(){
     ValueModel food(0);
     ValueModel tips(0);
 
+
+
     Expression *r =
             f.newAgg(
                     f.newAgg(
                             f.newThen(
-                                    f.newIs(&poor, &service),
+                                    f.newOr(f.newIs(&poor, &service), f.newIs(&rancid, &food)),
                                     f.newIs(&cheap, &tips)
-                                    ),
-                                    f.newThen(
-                                            f.newIs(&good, &service),
-                                            f.newIs(&average, &tips)
-                                            )
                             ),
                             f.newThen(
-                                    f.newIs(&excellent, &service),
-                                    f.newIs(&generous, &tips)
-                                    )
-                    );
+                                    f.newIs(&good, &service),
+                                    f.newIs(&average, &tips)
+                            )
+                            ),
+                            f.newThen(
+                                     f.newOr(f.newIs(&excellent, &service),f.newIs(&delicious, &food)),
+                                     f.newIs(&generous, &tips)
+                    )
+            );
+
+
 
     Expression *system = f.newMamdani(&tips, r);
 
-    float s;
+    double s;
+    double p;
     while(true){
         std::cout << "service: "; std::cin>>s;
+        std::cout << "food: "; std::cin>>p;
         service.setValue(s);
+        food.setValue(p);
         std::cout << "tips-> " << system->evaluate() << std::endl;
     }
 
