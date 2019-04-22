@@ -168,8 +168,8 @@ void useCase(){
     AggMax opgAgg;
     ThenMin opgThen;
 
-    CogDefuzz opDefuzz(0, 25, 1);
-    //BoaDefuzz opDefuzz(0, 25, 1);
+    CogDefuzz opDefuzz(0, 30, 1);
+    //BoaDefuzz opDefuzz(0, 30, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
 
@@ -217,8 +217,8 @@ void useCase(){
 
     Expression *system = f.newMamdani(&tips, r);
 
-    float s;
-    float p;
+    double s;
+    double p;
     while(true){
         std::cout << "service: "; std::cin>>s;
         std::cout << "food: "; std::cin>>p;
