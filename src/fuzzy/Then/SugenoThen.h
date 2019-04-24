@@ -12,7 +12,7 @@ namespace fuzzy {
         virtual T premiseValue() const;
 
     private:
-        T PremiseValue;
+        mutable T PremiseValue;
     };
 
 

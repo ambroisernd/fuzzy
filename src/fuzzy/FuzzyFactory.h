@@ -131,13 +131,13 @@ namespace fuzzy{
 
 
     template<typename T>
-    core::Expression<T> *FuzzyFactory<T>::newSugeno(vector<core::Expression<T> *> *o) {
-        return newNary(&opSugeno, o);
+    core::Expression<T> *FuzzyFactory<T>::newSugeno(std::vector<core::Expression<T> *> *o) {
+        return core::ExpressionFactory<T>::newNary(&opSugeno, o);
     }
 
     template<typename T>
-    core::Expression<T> *FuzzyFactory<T>::newSugenoConclusion(vector<core::Expression<T> *> *o) {
-        return newNary(&opSugenoConclusion, o);
+    core::Expression<T> *FuzzyFactory<T>::newSugenoConclusion(std::vector<core::Expression<T> *> *o) {
+        return core::ExpressionFactory<T>::newNary(&opSugenoConclusion, o);
     }
 
     template<typename T>

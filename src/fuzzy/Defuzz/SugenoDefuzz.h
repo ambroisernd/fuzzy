@@ -19,7 +19,7 @@ namespace fuzzy{
         for(typename std::vector<core::Expression<T>*>::iterator it = o->begin();it != o->end();it++){
             T eval = (*it)->evaluate();
             SugenoThen<T> sgThen = (**it);
-            denominateur += sgThen.premiseValue();
+            denominateur += sgThen->premiseValue();
             numerateur += eval;
 
         }
