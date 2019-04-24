@@ -20,7 +20,7 @@ namespace fuzzy{
             T eval = (*it)->evaluate();
             SugenoThen<T> sgThen = (**it);
             denominateur += sgThen.premiseValue();
-            numerateur += sgThen.premiseValue()*eval;
+            numerateur += eval;
 
         }
         return numerateur/denominateur;
