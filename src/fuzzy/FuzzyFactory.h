@@ -53,6 +53,15 @@ namespace fuzzy{
 
     };
 
+    template<typename T>
+    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                                  Then<T> *opThen, Agg<T> *opAgg, SugenoConclusion<T> *opSugenoConclusion, SugenoDefuzz<T>* opSugeno)
+            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opSugenoConclusion(opSugenoConclusion), opSugeno(opSugeno), opMamdani(NULL) {}
+
+    template<typename T>
+    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
+                                  Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani)
+            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani), opSugeno(NULL), opSugenoConclusion(NULL) {}
 
 
     template<typename T>
@@ -120,10 +129,6 @@ namespace fuzzy{
         opMamdani->setTarget(op);
     }
 
-    template<typename T>
-    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
-                                  Then<T> *opThen, Agg<T> *opAgg, MamdaniDefuzz<T> *opMamdani)
-            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opMamdani(opMamdani), opSugeno(NULL), opSugenoConclusion(NULL) {}
 
     template<typename T>
     core::Expression<T> *FuzzyFactory<T>::newSugeno(vector<core::Expression<T> *> *o) {
@@ -144,10 +149,6 @@ namespace fuzzy{
     void FuzzyFactory<T>::changeSugeno(SugenoDefuzz<T> *op) {
         opSugeno.setTarget(op);
     }
-    template<typename T>
-    FuzzyFactory<T>::FuzzyFactory(Not<T> *opNot, And<T> *opAnd, Or<T> *opOr,
-                                  Then<T> *opThen, Agg<T> *opAgg, SugenoConclusion<T> *opSugenoConclusion, SugenoDefuzz<T>* opSugeno)
-            :opNot(opNot), opAnd(opAnd), opOr(opOr), opThen(opThen), opAgg(opAgg), opSugenoConclusion(opSugenoConclusion), opSugeno(opSugeno) {}
 
 }
 #endif //FUZZY_FUZZYFACTORY_H
