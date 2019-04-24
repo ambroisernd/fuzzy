@@ -306,14 +306,14 @@ void useCaseSugeno(){
     float h;
     float p;
     while(true){
+
         std::cout << "humidite:" ; std::cin >>h;
 
         std::cout << "pression: "; std::cin>>p;
         humidite.setValue(h);
         pression.setValue(p);
         std::cout << "orage-> " << system->evaluate() << std::endl;
-        vectValueModel.clear();
-        vectExpression.clear();
+
     }
 
 
