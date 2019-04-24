@@ -20,6 +20,7 @@
 #include "fuzzy/FuzzyFactory.h"
 
 #include "fuzzy/Defuzz/CogDefuzz.h"
+#include "fuzzy/Defuzz/SugenoConclusion.h"
 
 #include "fuzzy/fuzzy.h"
 #include "core/core.h"
@@ -161,6 +162,28 @@ void orPlusTest(){
     ASSERT(ag.evaluate(&a,&b) == 2.0);
 }
 
+void sugenoConclusionTest(){
+    std::cout << "sugenoConclusion test" << std::endl;
+    //Construction du vecteur coeffs
+    std::vector<int> coeffs;
+    for(int i=0; i<4; i++){
+        coeffs.push_back(i);
+    }
+    fuzzy::SugenoConclusion<int> sc(coeffs);
+
+    core::ValueModel<int> v3(3);
+    core::ValueModel<int> v2(2);
+    core::ValueModel<int> v1(1);
+
+    std::vector<core::Expression<int> *> op;
+    op.push_back(&v1);
+    op.push_back(&v2);
+    op.push_back(&v3);
+
+    ASSERT(sc.evaluate(&op) == 0*1+1*2+2*3+3);
+
+}
+
 void useCase(){
     NotMinus1 opNot;
     AndMin opAnd;
@@ -229,6 +252,88 @@ void useCase(){
 
 }
 
+void useCaseSugeno(){
+    NotMinus1 opNot;
+    AndMin opAnd;
+    OrMax opOr;
+    AggMax opgAgg;
+    SugenoThen opgThen;
+
+    std::vector<double> v;
+    v.push_back(2.0L);
+    v.push_back(1.0L);
+    v.push_back(0.0L);
+
+    SugenoDefuzz opSugeno;
+
+    SugenoConclusion opSugenoConclusion(v);
+    SugenoConclusion opSugenoConclusion1(v);
+    SugenoConclusion opSugenoConclusion2(v);
+
+    FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opSugenoConclusion, &opSugeno);
+
+    ValueModel humidite(0.5);
+    ValueModel pression(0.2);
+
+    ValueModel orage(0);
+
+    isTriangle faible(0, 5, 10);
+    isTriangle moyenne(10, 15, 20);
+    isTriangle forte(20, 25, 30);
+
+    isTriangle minime(0, 5, 10);
+    isTriangle medium(10, 15, 20);
+    isTriangle elevee(20, 25, 30);
+
+    isTriangle peu(0, 5, 10);
+    isTriangle probable(10, 15, 20);
+    isTriangle certain(20, 25, 30);
+
+    std::vector<Expression*> vectValueModel;
+    vectValueModel.push_back(&humidite);
+    vectValueModel.push_back(&pression);
+
+
+    Expression *r1 = f.newThen(
+            f.newAnd(f.newIs(&faible, &humidite), f.newIs(&minime,&pression)),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    f.changeSugenoConclusion(&opSugenoConclusion1);
+
+    Expression *r2 = f.newThen(
+            f.newAnd(f.newIs(&moyenne, &humidite), f.newIs(&medium,&pression)),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    f.changeSugenoConclusion(&opSugenoConclusion2);
+    Expression *r3 = f.newThen(
+            f.newAnd(f.newIs(&forte, &humidite), f.newIs(&elevee,&pression)),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    std::vector<Expression *> vectExpression;
+    vectExpression.push_back(r1);
+    vectExpression.push_back(r2);
+    vectExpression.push_back(r3);
+
+    Expression* system = f.newSugeno(&vectExpression);
+
+    float h;
+    float p;
+    while(true){
+
+        std::cout << "humidite:" ; std::cin >>h;
+
+        std::cout << "pression: "; std::cin>>p;
+        humidite.setValue(h);
+        pression.setValue(p);
+        std::cout << "orage-> " << system->evaluate() << std::endl;
+
+    }
+
+
+ }
 int main() {
     valueModelTest();
     andMinTest();
@@ -245,6 +350,8 @@ int main() {
     aggregationMaxTest();
     aggregationPlusTest();
     orPlusTest();
-    useCase();
+    sugenoConclusionTest();
+    //useCase();
+    useCaseSugeno();
     return 0;
 }
