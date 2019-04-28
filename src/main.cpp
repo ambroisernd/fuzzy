@@ -173,58 +173,84 @@ void useCase(){
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
 
-    //service
-    isGaussian poor(0, 1.5);
-    isGaussian good(5, 1.5);
-    isGaussian excellent(10, 1.5);
+    //vent
+    isGaussian leger(0, 1.5);
+    isGaussian modere(5, 1.5);
+    isGaussian violent(10, 1.5);
 
-    //food
-    isTrapezeLeft rancid(1, 3);
-    isTrapezeRight delicious(7,9);
-    //trapère rancid 0 0 1 3
-    //trapere delicious 7 9 10 10
+    //pluie
+    isTrapezeLeft faible(2, 4);
+    isTrapezeRight battante(7,9);
 
-    //tips
-    isTriangle cheap(0, 5, 10);
-    isTriangle average(10, 15, 20);
-    isTriangle generous(20, 25, 30);
+    //neige
+    isTriangle legere(5, 10, 15);
+    isTriangle epaisse(15, 20, 25);
 
-    ValueModel service(0);
-    ValueModel food(0);
-    ValueModel tips(0);
+    //temperature
+    isBell glaciale(2,1,0);
+    isBell douce(2,1,5);
+    isBell eleve(2,1,10);
 
+    //zone
+    isGaussian verte(0,1.5);
+    isGaussian jaune(3,1.5);
+    isGaussian orange(6,1.5);
+    isGaussian rouge(9,1.5);
 
+    ValueModel vent(0);
+    ValueModel pluie(0);
+    ValueModel neige(0);
+    ValueModel temperature(0);
+    ValueModel zone(0);
+
+    //si vent leger ou pluie faible ou temperature douce -> zone verte
+    //si pluie battante -> zone jaune
+    //si neige legere et vent modere ou temperature elevee -> zone orange
+    //si temperature glaciale et vent violent ou neige epaisse -> zone rouge
 
     Expression *r =
             f.newAgg(
                     f.newAgg(
                             f.newThen(
-                                    f.newOr(f.newIs(&poor, &service), f.newIs(&rancid, &food)),
-                                    f.newIs(&cheap, &tips)
+                                    f.newOr(f.newOr(f.newIs(&leger,&vent),f.newIs(&faible,&pluie)),f.newIs(&douce,&temperature)),
+                                    f.newIs(&verte, &zone)
                             ),
                             f.newThen(
-                                    f.newIs(&good, &service),
-                                    f.newIs(&average, &tips)
+                                    f.newIs(&battante, &pluie),
+                                    f.newIs(&jaune, &zone)
                             )
                             ),
+                    f.newAgg(
                             f.newThen(
-                                     f.newOr(f.newIs(&excellent, &service),f.newIs(&delicious, &food)),
-                                     f.newIs(&generous, &tips)
+                                    f.newOr(f.newIs(&eleve,&temperature),f.newAnd(f.newIs(&legere, &neige), f.newIs(&modere, &vent))),
+                                    f.newIs(&orange, &zone)
+                            ),
+                            f.newThen(
+                                    f.newOr(f.newIs(&epaisse,&neige),f.newAnd(f.newIs(&glaciale, &temperature), f.newIs(&violent, &vent))),
+                                    f.newIs(&rouge, &zone)
+                            )
                     )
+
             );
 
 
 
-    Expression *system = f.newMamdani(&tips, r);
+    Expression *system = f.newMamdani(&zone, r);
 
-    float s;
+    float v;
     float p;
+    float n;
+    float t;
     while(true){
-        std::cout << "service: "; std::cin>>s;
-        std::cout << "food: "; std::cin>>p;
-        service.setValue(s);
-        food.setValue(p);
-        std::cout << "tips-> " << system->evaluate() << std::endl;
+        std::cout << "vent: "; std::cin>>v;
+        std::cout << "pluie: "; std::cin>>p;
+        std::cout << "neige: "; std::cin>>n;
+        std::cout << "temperature: "; std::cin>>t;
+        vent.setValue(v);
+        pluie.setValue(p);
+        neige.setValue(n);
+        temperature.setValue(t);
+        std::cout << "zone-> " << system->evaluate() << std::endl;
     }
 
 }
