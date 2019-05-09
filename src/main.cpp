@@ -20,6 +20,7 @@
 #include "fuzzy/FuzzyFactory.h"
 
 #include "fuzzy/Defuzz/CogDefuzz.h"
+#include "fuzzy/Defuzz/SugenoConclusion.h"
 
 #include "fuzzy/fuzzy.h"
 #include "core/core.h"
@@ -161,6 +162,28 @@ void orPlusTest(){
     ASSERT(ag.evaluate(&a,&b) == 2.0);
 }
 
+void sugenoConclusionTest(){
+    std::cout << "sugenoConclusion test" << std::endl;
+    //Construction du vecteur coeffs
+    std::vector<int> coeffs;
+    for(int i=0; i<4; i++){
+        coeffs.push_back(i);
+    }
+    fuzzy::SugenoConclusion<int> sc(coeffs);
+
+    core::ValueModel<int> v3(3);
+    core::ValueModel<int> v2(2);
+    core::ValueModel<int> v1(1);
+
+    std::vector<core::Expression<int> *> op;
+    op.push_back(&v1);
+    op.push_back(&v2);
+    op.push_back(&v3);
+
+    ASSERT(sc.evaluate(&op) == 0*1+1*2+2*3+3);
+
+}
+
 void useCase(){
     NotMinus1 opNot;
     AndMin opAnd;
@@ -168,8 +191,8 @@ void useCase(){
     AggMax opgAgg;
     ThenMin opgThen;
 
-    CogDefuzz opDefuzz(0, 25, 1);
-    //BoaDefuzz opDefuzz(0, 25, 1);
+    CogDefuzz opDefuzz(0, 30, 1);
+    //BoaDefuzz opDefuzz(0, 30, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
 
@@ -189,7 +212,7 @@ void useCase(){
     //temperature
     isBell douce(2,1,0);
     isBell eleve(2,1,5);
-    isBell galciale(2,1,10);
+    isBell glaciale(2,1,10);
 
     //zone
     isGaussian verte(0,1.5);
@@ -255,6 +278,82 @@ void useCase(){
 
 }
 
+void useCaseSugeno(){
+    NotMinus1 opNot;
+    AndMin opAnd;
+    OrMax opOr;
+    AggMax opgAgg;
+    SugenoThen opgThen;
+
+    std::vector<double> v;
+    v.push_back(2.0L);
+    v.push_back(5.0L);
+    v.push_back(1.0L);
+
+    SugenoDefuzz opSugeno;
+
+    SugenoConclusion opSugenoConclusion(v);
+    SugenoConclusion opSugenoConclusion1(v);
+    SugenoConclusion opSugenoConclusion2(v);
+
+    FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opSugenoConclusion, &opSugeno);
+
+    ValueModel humidite(0.5);
+    ValueModel pression(0.2);
+
+    isTrapezeLeft faible(1, 3);
+    isTrapezeRight forte(7, 9);
+
+    isGaussian minime(0, 1.5);
+    isGaussian medium(5, 1.5);
+    isGaussian elevee(10, 1.5);
+
+
+    std::vector<Expression*> vectValueModel;
+    vectValueModel.push_back(&humidite);
+    vectValueModel.push_back(&pression);
+
+
+    Expression *r1 = f.newThen(
+            f.newOr(f.newIs(&faible, &humidite), f.newIs(&minime,&pression)),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    f.changeSugenoConclusion(&opSugenoConclusion1);
+
+    Expression *r2 = f.newThen(
+            f.newIs(&medium,&pression),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    f.changeSugenoConclusion(&opSugenoConclusion2);
+    Expression *r3 = f.newThen(
+            f.newOr(f.newIs(&forte, &humidite), f.newIs(&elevee,&pression)),
+            f.newSugenoConclusion(&vectValueModel)
+    );
+
+    std::vector<Expression *> vectExpression;
+    vectExpression.push_back(r1);
+    vectExpression.push_back(r2);
+    vectExpression.push_back(r3);
+
+    Expression* system = f.newSugeno(&vectExpression);
+
+    float h;
+    float p;
+    while(true){
+
+        std::cout << "humidite:" ; std::cin >>h;
+
+        std::cout << "pression: "; std::cin>>p;
+        humidite.setValue(h);
+        pression.setValue(p);
+        std::cout << "orage-> " << system->evaluate() << std::endl;
+
+    }
+
+
+ }
 int main() {
     valueModelTest();
     andMinTest();
@@ -271,6 +370,8 @@ int main() {
     aggregationMaxTest();
     aggregationPlusTest();
     orPlusTest();
-    useCase();
+    sugenoConclusionTest();
+    //useCase();
+    useCaseSugeno();
     return 0;
 }
