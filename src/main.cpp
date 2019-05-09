@@ -261,8 +261,8 @@ void useCaseSugeno(){
 
     std::vector<double> v;
     v.push_back(2.0L);
+    v.push_back(5.0L);
     v.push_back(1.0L);
-    v.push_back(0.0L);
 
     SugenoDefuzz opSugeno;
 
@@ -275,15 +275,12 @@ void useCaseSugeno(){
     ValueModel humidite(0.5);
     ValueModel pression(0.2);
 
-    ValueModel orage(0);
+    isTrapezeLeft faible(1, 3);
+    isTrapezeRight forte(7, 9);
 
-    isTriangle faible(0, 5, 10);
-    isTriangle moyenne(10, 15, 20);
-    isTriangle forte(20, 25, 30);
-
-    isTriangle minime(0, 5, 10);
-    isTriangle medium(10, 15, 20);
-    isTriangle elevee(20, 25, 30);
+    isGaussian minime(0, 1.5);
+    isGaussian medium(5, 1.5);
+    isGaussian elevee(10, 1.5);
 
 
     std::vector<Expression*> vectValueModel;
@@ -292,20 +289,20 @@ void useCaseSugeno(){
 
 
     Expression *r1 = f.newThen(
-            f.newAnd(f.newIs(&faible, &humidite), f.newIs(&minime,&pression)),
+            f.newOr(f.newIs(&faible, &humidite), f.newIs(&minime,&pression)),
             f.newSugenoConclusion(&vectValueModel)
     );
 
     f.changeSugenoConclusion(&opSugenoConclusion1);
 
     Expression *r2 = f.newThen(
-            f.newAnd(f.newIs(&moyenne, &humidite), f.newIs(&medium,&pression)),
+            f.newIs(&medium,&pression),
             f.newSugenoConclusion(&vectValueModel)
     );
 
     f.changeSugenoConclusion(&opSugenoConclusion2);
     Expression *r3 = f.newThen(
-            f.newAnd(f.newIs(&forte, &humidite), f.newIs(&elevee,&pression)),
+            f.newOr(f.newIs(&forte, &humidite), f.newIs(&elevee,&pression)),
             f.newSugenoConclusion(&vectValueModel)
     );
 
