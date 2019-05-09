@@ -187,9 +187,9 @@ void useCase(){
     isTriangle epaisse(15, 20, 25);
 
     //temperature
-    isBell glaciale(2,1,0);
-    isBell douce(2,1,5);
-    isBell eleve(2,1,10);
+    isBell douce(2,1,0);
+    isBell eleve(2,1,5);
+    isBell galciale(2,1,10);
 
     //zone
     isGaussian verte(0,1.5);
