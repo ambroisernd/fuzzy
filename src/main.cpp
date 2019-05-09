@@ -285,9 +285,6 @@ void useCaseSugeno(){
     isTriangle medium(10, 15, 20);
     isTriangle elevee(20, 25, 30);
 
-    isTriangle peu(0, 5, 10);
-    isTriangle probable(10, 15, 20);
-    isTriangle certain(20, 25, 30);
 
     std::vector<Expression*> vectValueModel;
     vectValueModel.push_back(&humidite);
