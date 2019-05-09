@@ -189,7 +189,7 @@ void useCase(){
     //temperature
     isBell douce(2,1,0);
     isBell eleve(2,1,5);
-    isBell galciale(2,1,10);
+    isBell glaciale(2,1,10);
 
     //zone
     isGaussian verte(0,1.5);
@@ -250,7 +250,22 @@ void useCase(){
         pluie.setValue(p);
         neige.setValue(n);
         temperature.setValue(t);
-        std::cout << "zone-> " << system->evaluate() << std::endl;
+        double a= system->evaluate();
+        std::cout << "zone-> " <<system->evaluate() << std::endl;
+
+        if(a<=2) {
+            std::cout << "zone verte"<< std::endl;
+        }
+        if(a<=4 && a>2) {
+            std::cout << "zone jaune"<< std::endl;
+        }
+        if(a<=6 && a>4) {
+            std::cout << "zone orange"<< std::endl;
+        }
+        else {
+            std::cout << "zone rouge"<< std::endl;
+        }
+
     }
 
 }
