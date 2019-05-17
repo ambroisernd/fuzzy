@@ -5,6 +5,8 @@
 #include "BinaryExpression.h"
 #include "UnaryExpressionModel.h"
 #include "BinaryExpressionModel.h"
+#include "NaryExpression.h"
+#include "NaryExpressionModel.h"
 #include <set>
 namespace core{
     template <typename T>
@@ -17,6 +19,7 @@ namespace core{
         Expression<T>* Hold(Expression<T>*);
         Expression<T>* newUnary(UnaryExpression<T>* ope, Expression<T>* o);
         Expression<T>* newBinary(BinaryExpression<T> * ope, Expression<T>* l, Expression<T>* r);
+        Expression<T>* newNary(NaryExpression<T> *ope, std::vector<Expression<T> *> *o);
     };
     template <typename T>
     Expression<T>* ExpressionFactory<T>::Hold(core::Expression<T> * o) {
@@ -38,6 +41,11 @@ namespace core{
         for (Expression<T> *o : this->memory) {
             delete o;
         }
+    }
+
+    template<typename T>
+    Expression<T> *ExpressionFactory<T>::newNary(NaryExpression<T> *ope, std::vector<Expression<T> *> *o) {
+        return Hold(new NaryExpressionModel<T>(ope, o));
     }
 }
 #endif //FUZZY_EXPRESSIONFACTORY_H

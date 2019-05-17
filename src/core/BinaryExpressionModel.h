@@ -12,6 +12,9 @@ namespace core {
         virtual T evaluate() const ;
 
         virtual T evaluate(Expression<T> *l, Expression<T> *r) const ;
+
+        BinaryExpression <T> *getOperatore() const;
+
     private:
         BinaryExpression<T>* operatore;
         Expression<T>* left;
@@ -24,6 +27,11 @@ namespace core {
         if (left !=nullptr && right!=nullptr) {
             return evaluate(left, right);
         }
+    }
+
+    template<typename T>
+    BinaryExpression <T> *BinaryExpressionModel<T>::getOperatore() const {
+        return operatore;
     }
 
     template<typename T>

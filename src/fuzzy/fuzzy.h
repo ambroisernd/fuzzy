@@ -18,6 +18,8 @@
 #include "Or/OrPlus.h"
 #include "Defuzz/BoaDefuzz.h"
 #include "Then/SugenoThen.h"
+#include "Defuzz/SugenoConclusion.h"
+#include "Defuzz/SugenoDefuzz.h"
 
 typedef fuzzy::AggMax<NUMERIC> AggMax;
 typedef fuzzy::AndMin<NUMERIC> AndMin;
@@ -39,5 +41,7 @@ typedef fuzzy::AggPlus<NUMERIC> AggPlus;
 typedef fuzzy::OrPlus<NUMERIC> OrPlus;
 typedef fuzzy::BoaDefuzz<NUMERIC> BoaDefuzz;
 typedef fuzzy::SugenoThen<NUMERIC> SugenoThen;
+typedef fuzzy::SugenoConclusion<NUMERIC> SugenoConclusion;
+typedef fuzzy::SugenoDefuzz<NUMERIC> SugenoDefuzz;
 
 #endif //FUZZY_FUZZY_H
