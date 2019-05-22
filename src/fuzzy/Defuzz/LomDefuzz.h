@@ -27,7 +27,6 @@ namespace fuzzy{
                 fiber = shape.first.at(i);
             }
         }
-        std::cout<<fiber<<std::endl;
         return fiber;
     }
 }

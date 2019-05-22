@@ -276,21 +276,20 @@ void useCase(){
         neige.setValue(n);
         temperature.setValue(t);
         double a= system->evaluate();
-        std::cout << "zone-> " <<system->evaluate() << std::endl;
+        std::cout << "zone-> " <<a << std::endl;
         std::string condition;
         if(a<=2) {
-            condition ="zone verte";
+            std::cout << "zone verte"<< std::endl;
         }
-        if(a<=4 && a>2) {
-            condition = "zone jaune";
+        else if(a<=4 && a>2) {
+            std::cout << "zone jaune"<< std::endl;
         }
-        if(a<=6 && a>4) {
-            condition = "zone orange";
+        else if(a<=6 && a>4) {
+            std::cout << "zone orange"<< std::endl;
         }
-        else {
-            condition = "zone rouge";
+        else if(a>6) {
+            std::cout << "zone rouge"<< std::endl;
         }
-        std::cout<<condition<<std::endl;
 
     }
 
