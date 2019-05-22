@@ -9,4 +9,4 @@ file(
         src/*
 )
 
-add_executable(fuzzy ${sources})
+add_executable(fuzzy ${sources} src/fuzzy/Defuzz/LomDefuzz.h)

@@ -36,6 +36,7 @@ typedef fuzzy::OrMax<NUMERIC> OrMax;
 typedef fuzzy::ThenMin<NUMERIC> ThenMin;
 typedef fuzzy::MamdaniDefuzz<NUMERIC> MamdaniDefuzz;
 typedef fuzzy::CogDefuzz<NUMERIC> CogDefuzz;
+typedef fuzzy::LomDefuzz<NUMERIC> LomDefuzz;
 typedef fuzzy::FuzzyFactory<NUMERIC> FuzzyFactory;
 typedef fuzzy::AggPlus<NUMERIC> AggPlus;
 typedef fuzzy::OrPlus<NUMERIC> OrPlus;

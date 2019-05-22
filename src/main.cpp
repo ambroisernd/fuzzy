@@ -20,6 +20,7 @@
 #include "fuzzy/FuzzyFactory.h"
 
 #include "fuzzy/Defuzz/CogDefuzz.h"
+#include "fuzzy/Defuzz/LomDefuzz.h"
 #include "fuzzy/Defuzz/SugenoConclusion.h"
 
 #include "fuzzy/fuzzy.h"
@@ -191,8 +192,9 @@ void useCase(){
     AggMax opgAgg;
     ThenMin opgThen;
 
-    CogDefuzz opDefuzz(0, 30, 1);
+    //CogDefuzz opDefuzz(0, 30, 1);
     //BoaDefuzz opDefuzz(0, 30, 1);
+    LomDefuzz opDefuzz(0, 30, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
 
