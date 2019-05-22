@@ -20,6 +20,7 @@
 #include "Then/SugenoThen.h"
 #include "Defuzz/SugenoConclusion.h"
 #include "Defuzz/SugenoDefuzz.h"
+#include "Defuzz/SomDefuzz.h"
 
 typedef fuzzy::AggMax<NUMERIC> AggMax;
 typedef fuzzy::AndMin<NUMERIC> AndMin;
@@ -37,6 +38,7 @@ typedef fuzzy::ThenMin<NUMERIC> ThenMin;
 typedef fuzzy::MamdaniDefuzz<NUMERIC> MamdaniDefuzz;
 typedef fuzzy::CogDefuzz<NUMERIC> CogDefuzz;
 typedef fuzzy::LomDefuzz<NUMERIC> LomDefuzz;
+typedef fuzzy::SomDefuzz<NUMERIC> SomDefuzz;
 typedef fuzzy::FuzzyFactory<NUMERIC> FuzzyFactory;
 typedef fuzzy::AggPlus<NUMERIC> AggPlus;
 typedef fuzzy::OrPlus<NUMERIC> OrPlus;
