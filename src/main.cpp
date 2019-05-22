@@ -20,6 +20,8 @@
 #include "fuzzy/FuzzyFactory.h"
 
 #include "fuzzy/Defuzz/CogDefuzz.h"
+#include "fuzzy/Defuzz/LomDefuzz.h"
+#include "fuzzy/Defuzz/SomDefuzz.h"
 #include "fuzzy/Defuzz/SugenoConclusion.h"
 
 #include "fuzzy/fuzzy.h"
@@ -193,6 +195,8 @@ void useCase(){
 
     CogDefuzz opDefuzz(0, 30, 1);
     //BoaDefuzz opDefuzz(0, 30, 1);
+    //LomDefuzz opDefuzz(0, 30, 1);
+    //SomDefuzz opDefuzz(0, 30, 1);
 
     FuzzyFactory f(&opNot, &opAnd, &opOr, &opgThen, &opgAgg, &opDefuzz);
 
@@ -273,7 +277,22 @@ void useCase(){
         pluie.setValue(p);
         neige.setValue(n);
         temperature.setValue(t);
-        std::cout << "zone-> " << system->evaluate() << std::endl;
+        double a= system->evaluate();
+        std::cout << "zone-> " <<a << std::endl;
+        std::string condition;
+        if(a<=2) {
+            std::cout << "zone verte"<< std::endl;
+        }
+        else if(a<=4 && a>2) {
+            std::cout << "zone jaune"<< std::endl;
+        }
+        else if(a<=6 && a>4) {
+            std::cout << "zone orange"<< std::endl;
+        }
+        else if(a>6) {
+            std::cout << "zone rouge"<< std::endl;
+        }
+
     }
 
 }
@@ -371,7 +390,7 @@ int main() {
     aggregationPlusTest();
     orPlusTest();
     sugenoConclusionTest();
-    //useCase();
-    useCaseSugeno();
+    useCase();
+    //useCaseSugeno();
     return 0;
 }
