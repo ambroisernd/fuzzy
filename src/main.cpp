@@ -277,19 +277,20 @@ void useCase(){
         temperature.setValue(t);
         double a= system->evaluate();
         std::cout << "zone-> " <<system->evaluate() << std::endl;
-
+        std::string condition;
         if(a<=2) {
-            std::cout << "zone verte"<< std::endl;
+            condition ="zone verte";
         }
         if(a<=4 && a>2) {
-            std::cout << "zone jaune"<< std::endl;
+            condition = "zone jaune";
         }
         if(a<=6 && a>4) {
-            std::cout << "zone orange"<< std::endl;
+            condition = "zone orange";
         }
         else {
-            std::cout << "zone rouge"<< std::endl;
+            condition = "zone rouge";
         }
+        std::cout<<condition<<std::endl;
 
     }
 
@@ -388,7 +389,7 @@ int main() {
     aggregationPlusTest();
     orPlusTest();
     sugenoConclusionTest();
-    //useCase();
-    useCaseSugeno();
+    useCase();
+    //useCaseSugeno();
     return 0;
 }

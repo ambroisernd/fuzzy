@@ -19,8 +19,16 @@ namespace fuzzy{
 
     template<typename T>
     T LomDefuzz<T>::defuzz(typename Evaluator<T>::Shape shape) const {
-
-        return shape.first.at(shape.first.size());
+        T max = shape.second.at(0);
+        T fiber = 0;
+        for (int i = 0; i < shape.first.size(); i++) {
+            if (shape.second.at(i)>=max){
+                max = shape.second.at(i);
+                fiber = shape.first.at(i);
+            }
+        }
+        std::cout<<fiber<<std::endl;
+        return fiber;
     }
 }
 
